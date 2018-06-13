@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
-import { LoginService } from '../../services/login/login.service';
+import { LoginService } from '../../providers/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 
@@ -19,19 +19,19 @@ export class LoginPage {
   private loginForm: FormGroup
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     public loginService: LoginService,
     public formBuilder: FormBuilder,
     private alertCtrl: AlertController) {
 
-      this.loginForm = this.formBuilder.group({
-        email: ['', Validators.compose([Validators.required, Validators.email])],
-        senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
-      })
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+    })
   }
 
-  pushCadastro(){
+  pushCadastro() {
     this.navCtrl.push(CadastroPage);
   }
 
@@ -40,7 +40,6 @@ export class LoginPage {
       const email = this.loginForm.value.email;
       const senha = this.loginForm.value.senha;
       this.loginService.login(email, senha)
-        .then(resp => this.navCtrl.setRoot(HomePage))
         .catch(err => {
           console.log(err);
           let alert = this.alertCtrl.create({
@@ -52,10 +51,10 @@ export class LoginPage {
           alert.present();
         });
     }
-    
+
   }
 
-  logForm(){
+  logForm() {
     console.log(this.loginForm.value)
   }
 }
