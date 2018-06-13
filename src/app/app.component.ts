@@ -24,7 +24,7 @@ export class MyApp {
     afAuth.authState.subscribe(usuario => {
       console.log(usuario)
       if (usuario) {
-        // this.loginService.setLoggedUser(usuario);
+        this.loginService.setLoggedUser(usuario);
         this.rootPage = HomePage;
       } else {
         this.loginService.clearLoggedUser();

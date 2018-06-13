@@ -8,7 +8,7 @@ import { User } from '@firebase/auth-types';
 @Injectable()
 export class LoginService {
 
-    public usuarioLogado: Usuario;
+    public usuarioLogado = {} as Usuario;
     private db: firebase.firestore.Firestore;
 
     constructor(public afAuth: AngularFireAuth, public fireStore: AngularFirestore) {
@@ -54,6 +54,9 @@ export class LoginService {
     }
 
     clearLoggedUser() {
+    }
 
+    criarUsuario() {
+        console.log("criou o usuário");
     }
 }

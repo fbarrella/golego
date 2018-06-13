@@ -1,12 +1,8 @@
+import { CadastroPage } from './cadastro';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CadastroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoginService } from '../../providers/login/login.service';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private cadastroForm: FormGroup;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public loginService: LoginService,
+    public formBuilder: FormBuilder) {
+    this.cadastroForm = this.formBuilder.group({
+      nome: [],
+      sobrenome: [],
+      nascimento: [],
+      telefone: [],
+      email: [],
+      senha: [],
+      senha2: [],
+      endereco: [],
+      complemento: [],
+      bairro: [],
+      cidade: [],
+      estado: [],
+      cep: []
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPage');
   }
 
+  criarUsuario() {
+    this.loginService.criarUsuario();
+    this.navCtrl.pop();
+  }
 }

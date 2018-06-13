@@ -10,15 +10,18 @@
       <ion-label floating>E-mail</ion-label>
       <ion-input type='text' formControlName="email"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label floating>Senha</ion-label>
       <ion-input type='password' formControlName="senha"></ion-input>
     </ion-item>
     <div padding>
-      <button ion-button block color='primary' type="submit" [disabled]="!loginForm.valid">ENTRAR</button>
-      <button ion-button block color='secondary' (click)='pushCadastro()'>CADASTRAR</button>
+      <button ion-button block color='padrao' type="submit" [disabled]="!loginForm.valid">Entrar</button>
+      <p><a href="#">Esqueci minha senha</a></p>
     </div>
   </form>
+  <div padding>
+    <button ion-button block color='secondary' (click)='pushCadastro()' class="inferior">Quero me cadastrar!</button>
+  </div>
 
 </ion-content>
