@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginService } from '../../services/login/login.service';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { LoginService } from '../../providers/login/login.service';
 
 @IonicPage()
 @Component({
@@ -9,14 +9,15 @@ import { LoginService } from '../../services/login/login.service';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginService) {
+  constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public navParams: NavParams,
+    public loginService: LoginService) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
-
-  logOut(){
+  logOut() {
     this.loginService.logout()
   }
 }
