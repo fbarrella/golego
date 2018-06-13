@@ -1,4 +1,3 @@
-import { CadastroPage } from './cadastro';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -18,19 +17,19 @@ export class CadastroPage {
     public loginService: LoginService,
     public formBuilder: FormBuilder) {
     this.cadastroForm = this.formBuilder.group({
-      nome: [],
-      sobrenome: [],
-      nascimento: [],
-      telefone: [],
-      email: [],
-      senha: [],
-      senha2: [],
-      endereco: [],
-      complemento: [],
-      bairro: [],
-      cidade: [],
-      estado: [],
-      cep: []
+      nome: [''],
+      sobrenome: [''],
+      nascimento: [''],
+      telefone: [''],
+      email: [''],
+      senha: [''],
+      senha2: [''],
+      endereco: [''],
+      complemento: [''],
+      bairro: [''],
+      cidade: [''],
+      estado: [''],
+      cep: ['']
     });
   }
 

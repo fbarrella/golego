@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
 import { LoginService } from '../../providers/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -20,15 +19,23 @@ export class LoginPage {
 
   constructor(
     public navCtrl: NavController,
+    public menuCtrl: MenuController,
     public navParams: NavParams,
     public loginService: LoginService,
     public formBuilder: FormBuilder,
     private alertCtrl: AlertController) {
-
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
-    })
+    });
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true);
   }
 
   pushCadastro() {

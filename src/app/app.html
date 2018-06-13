@@ -1,1 +1,17 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="conteudo" side="right">
+    <ion-content>
+        <ion-list>
+            <p>Tela Principal</p>
+            <p>Meu Perfil</p>
+            <p>Meus Pedidos</p>
+            <p>Nova Compra</p>
+            <p>Minha Loja</p>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+        <p>Sobre o aplicativo</p>
+        <p>Sair</p>
+    </ion-footer>
+</ion-menu>
+
+<ion-nav #conteudo [root]="rootPage"></ion-nav>
