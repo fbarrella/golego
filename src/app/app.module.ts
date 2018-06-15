@@ -1,3 +1,7 @@
+import { LojaPage } from './../pages/loja/loja';
+import { CatalogoPage } from './../pages/catalogo/catalogo';
+import { PedidosPage } from './../pages/pedidos/pedidos';
+import { PerfilPage } from './../pages/perfil/perfil';
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -21,7 +25,11 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     MyApp,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    PerfilPage,
+    PedidosPage,
+    CatalogoPage,
+    LojaPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,11 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     MyApp,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    PerfilPage,
+    PedidosPage,
+    CatalogoPage,
+    LojaPage
   ],
   providers: [
     StatusBar,
