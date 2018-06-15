@@ -1,7 +1,4 @@
-import { LojaPage } from './../pages/loja/loja';
-import { CatalogoPage } from './../pages/catalogo/catalogo';
-import { PedidosPage } from './../pages/pedidos/pedidos';
-import { PerfilPage } from './../pages/perfil/perfil';
+import { CustomHeaderComponent } from './../components/custom-header/custom-header';
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
@@ -17,6 +14,10 @@ import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CadastroPage } from "../pages/cadastro/cadastro";
+import { LojaPage } from './../pages/loja/loja';
+import { CatalogoPage } from './../pages/catalogo/catalogo';
+import { PedidosPage } from './../pages/pedidos/pedidos';
+import { PerfilPage } from './../pages/perfil/perfil';
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 
@@ -29,7 +30,8 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     PerfilPage,
     PedidosPage,
     CatalogoPage,
-    LojaPage
+    LojaPage,
+    CustomHeaderComponent
   ],
   imports: [
     BrowserModule,
