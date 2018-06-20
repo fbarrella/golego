@@ -25,7 +25,7 @@ export class LoginService {
         return this.afAuth.auth.signOut()
     }
 
-    resetPassword(email: string): Promise<void> {
+    resetarSenha(email: string): Promise<void> {
         return this.afAuth.auth.sendPasswordResetEmail(email);
     }
 
@@ -56,7 +56,22 @@ export class LoginService {
     clearLoggedUser() {
     }
 
-    criarUsuario() {
-        console.log("criou o usuário");
+    async criarUsuario(email: string, senha: string, dadosDoPerfil: Usuario): Promise<firebase.User> {
+        try {
+            const usuario: firebase.User = await this.afAuth.auth.createUserWithEmailAndPassword(email, senha);
+            const perfilRef: AngularFirestoreDocument<Usuario> = this.fireStore.doc(`user/${usuario.uid}`);
+            await perfilRef.set({
+                nome: dadosDoPerfil.nome,
+                sobrenome: dadosDoPerfil.sobrenome,
+                dataNasc: dadosDoPerfil.dataNasc,
+                telefone: dadosDoPerfil.telefone,
+                possuiLoja: false,
+                endereco: dadosDoPerfil.endereco
+            }, { merge: true });
+            return usuario;
+        } catch (error) {
+            console.log(error);
+            throw new Error("Erro na criação de usuário");
+        }
     }
 }

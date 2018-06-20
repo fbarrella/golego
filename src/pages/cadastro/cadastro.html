@@ -5,8 +5,13 @@
 
 <ion-content padding>
   <h1>Realizar Cadastro</h1>
-  <form [formGroup]="cadastroForm" (ngSubmit)="criarUsuario()">
 
+  <ion-item>
+    <ion-label floating>Data de Nascimento</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" min="1900" max="1999" [(ngModel)]="nascimento"></ion-datetime>
+  </ion-item>
+
+  <form [formGroup]="cadastroForm" (ngSubmit)="criarUsuario()">
     <ion-item>
       <ion-label floating>Nome</ion-label>
       <ion-input type='text' formControlName="nome"></ion-input>
@@ -15,11 +20,6 @@
     <ion-item>
       <ion-label floating>Sobrenome</ion-label>
       <ion-input type='text' formControlName="sobrenome"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Data de Nascimento</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" min="1900" max="1999" formControlname="nascimento"></ion-datetime>
     </ion-item>
 
     <ion-item>
@@ -76,4 +76,5 @@
       <button ion-button block color='padrao' type="submit">Confirmar</button>
     </div>
   </form>
+
 </ion-content>

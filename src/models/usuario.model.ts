@@ -1,12 +1,13 @@
 export interface Usuario {
-    uid: string,
+    uid?: string,
     nome: string,
     sobrenome: string,
-    email: string,
-    dataNasc: Date,
+    email?: string,
+    emailVerificado?: boolean,
+    dataNasc: string,
     avatarUrl?: string,
     telefone: string,
-    possuiLoja: boolean,
+    possuiLoja?: boolean,
     endereco: Endereco
 }
 

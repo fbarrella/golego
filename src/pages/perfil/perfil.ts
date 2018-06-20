@@ -14,7 +14,7 @@ export class PerfilPage {
     nome: "João",
     sobrenome: "Silva",
     email: "joaozinho@email.com",
-    dataNasc: new Date("01/04/1994"),
+    dataNasc: "01/04/1994",
     avatarUrl: "../../assets/imgs/profile.jpg",
     telefone: "(13)-9999-9999",
     possuiLoja: false,
