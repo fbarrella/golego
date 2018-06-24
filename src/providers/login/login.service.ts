@@ -14,7 +14,6 @@ export class LoginService {
     constructor(public afAuth: AngularFireAuth, public fireStore: AngularFirestore) {
         this.db = firebase.firestore();
         this.db.settings({ timestampsInSnapshots: true })
-        this.afAuth.authState.subscribe(usuario => this.setLoggedUser(usuario));
     }
 
     login(email: string, password: string): Promise<firebase.User> {
@@ -29,31 +28,36 @@ export class LoginService {
         return this.afAuth.auth.sendPasswordResetEmail(email);
     }
 
-    setLoggedUser(usuario: User) {
-        /*const usuarioDocument = this.db
-            .doc(`user/${usuario.uid}`)
-            .get()
-            .then(resp => {
-                let doc = resp.data();
-                this.usuarioLogado = {
-                    uid: usuario.uid,
-                    fullName: doc.fullName,
-                    displayName: doc.displayName,
-                    birthDate: doc.birthDate.toDate(),
-                    avatarUrl: doc.avatarUrl,
-                    phoneNumber: doc.phoneNumber,
-                    hasStore: doc.hasStore,
-                    storeId: doc.storeId
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
+    async setUsuarioLogado(uid: string) {
+        try {
+            const usuarioDocument: firebase.firestore.DocumentSnapshot =
+                await this.db
+                    .doc(`user/${uid}`)
+                    .get();
 
-        console.log(this.usuarioLogado);*/
+            let dados = usuarioDocument.data();
+
+            this.usuarioLogado = {
+                uid: dados.uid,
+                nome: dados.nome,
+                sobrenome: dados.sobrenome,
+                email: dados.email,
+                emailVerificado: dados.emailVerified,
+                dataNasc: dados.dataNasc,
+                avatarUrl: dados.avatarUrl,
+                telefone: dados.telefone,
+                possuiLoja: dados.possuiLoja,
+                endereco: dados.endereco
+            }
+
+            console.log(this.usuarioLogado);
+        } catch (error) {
+            throw error();
+        }
     }
 
-    clearLoggedUser() {
+    limparUsuarioLogado() {
+        this.usuarioLogado = null
     }
 
     async criarUsuario(email: string, senha: string, dadosDoPerfil: Usuario): Promise<firebase.User> {

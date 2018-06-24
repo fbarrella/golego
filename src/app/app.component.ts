@@ -41,12 +41,12 @@ export class MyApp {
     public afAuth: AngularFireAuth,
     public loginService: LoginService) {
     afAuth.authState.subscribe(usuario => {
-      console.log(usuario)
       if (usuario) {
-        this.loginService.setLoggedUser(usuario);
-        this.rootPage = HomePage;
+        this.loginService.setUsuarioLogado(usuario.uid)
+          .then(() => {
+            this.rootPage = HomePage;
+          });
       } else {
-        this.loginService.clearLoggedUser();
         this.rootPage = LoginPage;
       }
     })
