@@ -1,8 +1,9 @@
-import { Usuario } from './../../models/usuario.model';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert, LoadingController, Loading } from 'ionic-angular';
+
 import { LoginService } from '../../providers/login/login.service';
+import { Usuario } from './../../models/usuario.model';
 
 @IonicPage()
 @Component({
@@ -13,15 +14,17 @@ export class CadastroPage {
 
   private cadastroForm: FormGroup;
   public nascimento: string = "";
+  public siglas = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   telefonePattern = /^\([1-9]{2}\)\s?(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/;
+  cepPattern = /^\d{5}[-]\d{3}$/;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loginService: LoginService,
-    public formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    private formBuilder: FormBuilder,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController) {
     this.cadastroForm = this.formBuilder.group({
       nome: this.formBuilder.control('', Validators.compose([
         Validators.required, Validators.minLength(3)])),
@@ -44,24 +47,69 @@ export class CadastroPage {
         Validators.required, Validators.minLength(3)])),
       estado: this.formBuilder.control('', Validators.compose([
         Validators.required, Validators.minLength(2)])),
-      cep: this.formBuilder.control('', Validators.compose([Validators.required]))
+      cep: this.formBuilder.control('', Validators.compose([
+        Validators.required, Validators.pattern(this.cepPattern)]))
     }, { validator: CadastroPage.validaSenha });
   }
 
   static validaSenha(group: AbstractControl): { [key: string]: boolean } {
-    const senha = group.get('senha')
-    const senhaConfirmacao = group.get('senha2')
+    const senha = group.get('senha');
+    const senhaConfirmacao = group.get('senha2');
     if (!senha || !senhaConfirmacao) {
-      return undefined
+      return undefined;
     }
     if (senha.value !== senhaConfirmacao.value) {
-      return { senhaNaoConfere: true }
+      return { senhaNaoConfere: true };
     }
-    return undefined
+    return undefined;
   }
 
+  get nome() {
+    return this.cadastroForm.get("nome").value;
+  }
+
+  get sobrenome() {
+    return this.cadastroForm.get("sobrenome").value;
+  }
+
+  get telefone() {
+    return this.cadastroForm.get("telefone").value;
+  }
+
+  get email() {
+    return this.cadastroForm.get("email").value;
+  }
+
+  get senha() {
+    return this.cadastroForm.get("senha").value;
+  }
+
+  get endereco() {
+    return this.cadastroForm.get("endereco").value;
+  }
+
+  get complemento() {
+    return this.cadastroForm.get("complemento").value;
+  }
+
+  get bairro() {
+    return this.cadastroForm.get("bairro").value;
+  }
+
+  get cidade() {
+    return this.cadastroForm.get("cidade").value;
+  }
+
+  get estado() {
+    return this.cadastroForm.get("estado").value;
+  }
+
+  get cep() {
+    return this.cadastroForm.get("cep").value;
+  }
+
+
   async criarUsuario(): Promise<any> {
-    console.log(this.cadastroForm)
     if (!this.cadastroForm.valid || this.nascimento === "") {
       let alerta: Alert = this.alertCtrl.create({
         message: "O formulário está inválido!",
@@ -70,24 +118,23 @@ export class CadastroPage {
       alerta.present();
     }
     else {
-      console.log(this.cadastroForm.value);
       let carregamento: Loading;
       carregamento = this.loadingCtrl.create();
       carregamento.present();
-      const email: string = this.cadastroForm.get("email").value;
-      const senha: string = this.cadastroForm.get("senha").value;
+      const email: string = this.email;
+      const senha: string = this.senha;
       const usuario: Usuario = {
-        nome: this.cadastroForm.get("nome").value,
-        sobrenome: this.cadastroForm.get("sobrenome").value,
+        nome: this.nome,
+        sobrenome: this.sobrenome,
         dataNasc: this.nascimento,
-        telefone: this.cadastroForm.get("telefone").value,
+        telefone: this.telefone,
         endereco: {
-          bairro: this.cadastroForm.get("bairro").value,
-          cidade: this.cadastroForm.get("cidade").value,
-          complemento: this.cadastroForm.get("complemento").value,
-          rua: this.cadastroForm.get("endereco").value,
-          estado: this.cadastroForm.get("estado").value,
-          cep: this.cadastroForm.get("cep").value
+          bairro: this.bairro,
+          cidade: this.cidade,
+          complemento: this.complemento,
+          rua: this.endereco,
+          estado: this.estado,
+          cep: this.cep
         }
       };
       try {

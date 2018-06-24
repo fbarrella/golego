@@ -13,23 +13,23 @@
 
   <form [formGroup]="cadastroForm" (ngSubmit)="criarUsuario()">
     <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type='text' formControlName="nome"></ion-input>
+      <ion-label fixed>Nome</ion-label>
+      <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Sobrenome</ion-label>
-      <ion-input type='text' formControlName="sobrenome"></ion-input>
+      <ion-label fixed>Sobrenome</ion-label>
+      <ion-input type='text' formControlName="sobrenome" placeholder="Silva"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Telefone</ion-label>
-      <ion-input type='text' formControlName="telefone"></ion-input>
+      <ion-label fixed>Telefone</ion-label>
+      <ion-input type='text' formControlName="telefone" placeholder="(13) 3333-3333"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type='text' formControlName="email"></ion-input>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type='text' formControlName="email" placeholder="joao@email.com.br"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -48,8 +48,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Complemento (opcional)</ion-label>
-      <ion-input type='text' formControlName="complemento"></ion-input>
+      <ion-label fixed>Complemento (opcional)</ion-label>
+      <ion-input type='text' formControlName="complemento" placeholder="Apto/Conjunto/Bloco"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -63,13 +63,15 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Estado</ion-label>
-      <ion-input type='text' formControlName="estado"></ion-input>
+      <ion-label fixed>Estado</ion-label>
+      <ion-select formControlName="estado">
+        <ion-option *ngFor="let sigla of siglas" [value]="sigla">{{sigla}}</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>CEP</ion-label>
-      <ion-input type='text' formControlName="cep"></ion-input>
+      <ion-label fixed>CEP</ion-label>
+      <ion-input type='text' formControlName="cep" placeholder="10000-000"></ion-input>
     </ion-item>
 
     <div padding>
