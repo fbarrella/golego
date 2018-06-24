@@ -10,6 +10,8 @@
     <ion-avatar>
       <img [src]="dadosDoUsuario.avatarUrl" class="center">
     </ion-avatar>
+    <button ion-button color='cinza' (click)="escolherFoto()">Trocar Foto</button>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
   </ion-item>
 
   <form [formGroup]="formEditar" (ngSubmit)="atualizarUsuario()">

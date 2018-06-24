@@ -1,6 +1,11 @@
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { finalize } from 'rxjs/operators';
 
 import { Validacoes } from '../../utils/validators';
 import { Usuario } from './../../models/usuario.model';
@@ -12,14 +17,24 @@ import { Usuario } from './../../models/usuario.model';
 })
 export class PerfilEditarPage {
 
-  dadosDoUsuario = {} as Usuario;
-  formEditar: FormGroup;
-  siglas: string[];
+  private dadosDoUsuario = {} as Usuario;
+  private formEditar: FormGroup;
+  private siglas: string[];
+
+  // Upload
+  private task: AngularFireUploadTask;
+  private downloadUrl: Observable<string>;
+  private porcentagem: Observable<number>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public fb: FormBuilder) {
+    public fb: FormBuilder,
+    public fileChooser: FileChooser,
+    public file: File,
+    public storage: AngularFireStorage,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController) {
     this.dadosDoUsuario = navParams.data;
     this.siglas = Validacoes.siglasDosEstados();
     this.formEditar = this.fb.group({
@@ -46,5 +61,46 @@ export class PerfilEditarPage {
   atualizarUsuario() {
     console.log(this.formEditar.value);
   }
+
+  escolherFoto() {
+    let carregamento = this.loadingCtrl.create();
+    try {
+      this.fileChooser.open().then((uri) => {
+        alert(uri);
+        //Recebe a uri do sistema e obtem os detalhes
+        this.file.resolveLocalFilesystemUrl(uri).then((fileUri) => {
+          alert(JSON.stringify(fileUri));
+
+          //obtém o caminho do direitório da foto
+          let dirPath = fileUri.nativeURL;
+          let split = dirPath.split('/');
+          split.pop();
+          dirPath = split.join('/');
+
+          this.file.readAsArrayBuffer(dirPath, fileUri.name).then(async (buffer) => {
+            carregamento.present();
+            await this.subirFoto(buffer, fileUri.name);
+            carregamento.dismiss();
+          })
+        })
+      })
+    } catch (error) {
+      carregamento.dismiss();
+      throw new Error(error.message);
+    }
+  }
+
+  // https://github.com/angular/angularfire2/blob/master/docs/storage/storage.md
+  async subirFoto(buffer: ArrayBuffer, name: string) {
+    const path = `imagens/users/${this.dadosDoUsuario.uid}_${name}`;
+    const fotoBlob = new Blob([buffer], { type: "image" });
+    const fileRef = this.storage.ref(path);
+    this.task = this.storage.upload(path, fotoBlob);
+    this.porcentagem = this.task.percentageChanges();
+    this.task.snapshotChanges().pipe(
+      finalize(() => this.downloadUrl = fileRef.getDownloadURL())
+    ).subscribe()
+  }
+
 
 }
