@@ -4,14 +4,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Realizar Cadastro</h1>
+  <h1>Editar Perfil</h1>
 
   <ion-item>
-    <ion-label floating>Data de Nascimento</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" min="1900" max="1999" [(ngModel)]="nascimento"></ion-datetime>
+    <ion-avatar>
+      <img [src]="dadosDoUsuario.avatarUrl" class="center">
+    </ion-avatar>
   </ion-item>
 
-  <form [formGroup]="cadastroForm" (ngSubmit)="criarUsuario()">
+  <form [formGroup]="formEditar" (ngSubmit)="atualizarUsuario()">
     <ion-item>
       <ion-label fixed>Nome</ion-label>
       <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>
@@ -25,21 +26,6 @@
     <ion-item>
       <ion-label fixed>Telefone</ion-label>
       <ion-input type='text' formControlName="telefone" placeholder="(13) 3333-3333"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type='text' formControlName="email" placeholder="joao@email.com.br"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type='password' formControlName="senha"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Confirmar senha</ion-label>
-      <ion-input type='password' formControlName="senha2"></ion-input>
     </ion-item>
 
     <ion-item>

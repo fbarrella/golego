@@ -1,9 +1,21 @@
 export interface Usuario {
-    uid: string,
+    uid?: string,
     nome: string,
     sobrenome: string,
-    dataNasc: Date,
+    email?: string,
+    emailVerificado?: boolean,
+    dataNasc: string,
     avatarUrl?: string,
     telefone: string,
-    possuiLoja: boolean,
+    possuiLoja?: boolean,
+    endereco: Endereco
+}
+
+export interface Endereco {
+    bairro: string,
+    cidade: string,
+    complemento?: string,
+    rua: string,
+    estado: string,
+    cep: string
 }

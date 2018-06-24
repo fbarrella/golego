@@ -1,3 +1,6 @@
+import { PerfilEditarPage } from './../perfil-editar/perfil-editar';
+import { LoginService } from './../../providers/login/login.service';
+import { Usuario } from './../../models/usuario.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -8,11 +11,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario = {} as Usuario
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loginService: LoginService) {
+    this.usuario = loginService.usuarioLogado;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
+  pushEditarPerfil() {
+    this.navCtrl.push(PerfilEditarPage, this.usuario)
   }
 
 }
