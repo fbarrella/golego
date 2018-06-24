@@ -21,7 +21,7 @@
 
       <ion-row>
         <p>
-          {{usuario?.endereco.rua}} - {{usuario?.endereco.bairro}} - {{usuario?.endereco.cidade}}, {{usuario?.endereco.estado}}
+          {{usuario?.endereco?.rua}} - {{usuario?.endereco?.bairro}} - {{usuario?.endereco?.cidade}}, {{usuario?.endereco?.estado}}
         </p>
       </ion-row>
 
@@ -30,7 +30,7 @@
       </ion-row>
 
       <ion-row>
-        <p>{{usuario?.endereco.complemento}}</p>
+        <p>{{usuario?.endereco?.complemento}}</p>
       </ion-row>
 
       <ion-row>
@@ -38,7 +38,7 @@
       </ion-row>
 
       <ion-row>
-        <p>{{usuario?.endereco.cep}}</p>
+        <p>{{usuario?.endereco?.cep}}</p>
       </ion-row>
 
       <ion-row>
@@ -50,7 +50,7 @@
     </ion-col>
 
   </ion-grid>
-  <button ion-button block color='cinza'>Editar informações</button>
+  <button ion-button block color='cinza' (click)="pushEditarPerfil()">Editar informações</button>
 
 
 </ion-content>

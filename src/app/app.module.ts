@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
 import { AngularFireModule } from "angularfire2";
-import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
+import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore"
 import { LoginService } from "../providers/login/login.service";
 
@@ -18,6 +18,7 @@ import { LojaPage } from './../pages/loja/loja';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
 import { PedidosPage } from './../pages/pedidos/pedidos';
 import { PerfilPage } from './../pages/perfil/perfil';
+import { PerfilEditarPage } from './../pages/perfil-editar/perfil-editar';
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 
@@ -28,6 +29,7 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     LoginPage,
     CadastroPage,
     PerfilPage,
+    PerfilEditarPage,
     PedidosPage,
     CatalogoPage,
     LojaPage,
@@ -47,6 +49,7 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     LoginPage,
     CadastroPage,
     PerfilPage,
+    PerfilEditarPage,
     PedidosPage,
     CatalogoPage,
     LojaPage

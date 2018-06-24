@@ -1,9 +1,10 @@
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Validacoes } from './../../utils/validators';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, Alert, LoadingController, Loading } from 'ionic-angular';
 
 import { LoginService } from '../../providers/login/login.service';
 import { Usuario } from './../../models/usuario.model';
+import { Component } from '@angular/core';
 
 @IonicPage()
 @Component({
@@ -14,10 +15,8 @@ export class CadastroPage {
 
   private cadastroForm: FormGroup;
   public nascimento: string = "";
-  public siglas = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
-  emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  telefonePattern = /^\([1-9]{2}\)\s?(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/;
-  cepPattern = /^\d{5}[-]\d{3}$/;
+  public siglas = Validacoes.siglasDosEstados();
+
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -31,9 +30,9 @@ export class CadastroPage {
       sobrenome: this.formBuilder.control('', Validators.compose([
         Validators.required, Validators.minLength(3)])),
       telefone: this.formBuilder.control('', Validators.compose([
-        Validators.required, Validators.pattern(this.telefonePattern)])),
+        Validators.required, Validators.pattern(Validacoes.telefonePattern())])),
       email: this.formBuilder.control('', Validators.compose([
-        Validators.required, Validators.pattern(this.emailPattern)])),
+        Validators.required, Validators.pattern(Validacoes.emailPattern())])),
       senha: this.formBuilder.control('', Validators.compose([
         Validators.required, Validators.minLength(6)])),
       senha2: this.formBuilder.control('', Validators.compose([
@@ -48,21 +47,11 @@ export class CadastroPage {
       estado: this.formBuilder.control('', Validators.compose([
         Validators.required, Validators.minLength(2)])),
       cep: this.formBuilder.control('', Validators.compose([
-        Validators.required, Validators.pattern(this.cepPattern)]))
-    }, { validator: CadastroPage.validaSenha });
+        Validators.required, Validators.pattern(Validacoes.cepPattern())]))
+    }, { validator: Validacoes.validaSenha });
   }
 
-  static validaSenha(group: AbstractControl): { [key: string]: boolean } {
-    const senha = group.get('senha');
-    const senhaConfirmacao = group.get('senha2');
-    if (!senha || !senhaConfirmacao) {
-      return undefined;
-    }
-    if (senha.value !== senhaConfirmacao.value) {
-      return { senhaNaoConfere: true };
-    }
-    return undefined;
-  }
+
 
   get nome() {
     return this.cadastroForm.get("nome").value;

@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="padrao">
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Editar Perfil</h1>
+
+  <ion-item>
+    <ion-avatar>
+      <img [src]="dadosDoUsuario.avatarUrl" class="center">
+    </ion-avatar>
+  </ion-item>
+
+  <form [formGroup]="formEditar" (ngSubmit)="atualizarUsuario()">
+    <ion-item>
+      <ion-label fixed>Nome</ion-label>
+      <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Sobrenome</ion-label>
+      <ion-input type='text' formControlName="sobrenome" placeholder="Silva"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Telefone</ion-label>
+      <ion-input type='text' formControlName="telefone" placeholder="(13) 3333-3333"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Endereço</ion-label>
+      <ion-input type='text' formControlName="endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Complemento (opcional)</ion-label>
+      <ion-input type='text' formControlName="complemento" placeholder="Apto/Conjunto/Bloco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Bairro</ion-label>
+      <ion-input type='text' formControlName="bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Cidade</ion-label>
+      <ion-input type='text' formControlName="cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Estado</ion-label>
+      <ion-select formControlName="estado">
+        <ion-option *ngFor="let sigla of siglas" [value]="sigla">{{sigla}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>CEP</ion-label>
+      <ion-input type='text' formControlName="cep" placeholder="10000-000"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button block color='padrao' type="submit">Confirmar</button>
+    </div>
+  </form>
+
+</ion-content>
