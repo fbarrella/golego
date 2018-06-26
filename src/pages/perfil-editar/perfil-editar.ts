@@ -101,7 +101,7 @@ export class PerfilEditarPage {
     return this.formEditar.get("cep").value;
   }
 
-  async atualizarUsuario() {
+  async salvarAlteracoes() {
     let carregamento: Loading = this.loadingCtrl.create();
     try {
       if (this.formEditar.valid) {

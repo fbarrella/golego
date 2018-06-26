@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  padrao: #fcd07e,
+  padrao: #f8bd50,
   cinza: #636466,
   marrom: #c19e7a,
   marromEscuro: #8e6a45,
@@ -44,6 +44,10 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
+
+.back-button-icon{
+  color: white;
+}
 
 
 // App iOS Variables

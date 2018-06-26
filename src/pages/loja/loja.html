@@ -2,6 +2,15 @@
   <custom-header></custom-header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <ion-card *ngFor="let p of paginas">
+    <ion-card-content>
+      <button ion-item (click)="abrirPagina(p)">
+      <ion-icon [name]="p.icone" item-start></ion-icon>
+      {{p.titulo}}
+    </button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
