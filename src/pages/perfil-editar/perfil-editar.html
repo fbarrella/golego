@@ -8,13 +8,13 @@
 
   <ion-item>
     <ion-avatar>
-      <img [src]="dadosDoUsuario.avatarUrl" class="center">
+      <img *ngIf="fotoTrocada" #novaFoto [src]="downloadUrl | async" class="center">
+      <img *ngIf="!fotoTrocada" [src]="dadosDoUsuario.avatarUrl" class="center">
     </ion-avatar>
-    <button ion-button color='cinza' (click)="escolherFoto()">Trocar Foto</button>
-    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <button ion-button color='cinza' (click)="salvarAlteracoes()">Trocar Foto</button>
   </ion-item>
 
-  <form [formGroup]="formEditar" (ngSubmit)="atualizarUsuario()">
+  <form [formGroup]="formEditar" (ngSubmit)="at()">
     <ion-item>
       <ion-label fixed>Nome</ion-label>
       <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>
@@ -63,7 +63,7 @@
     </ion-item>
 
     <div padding>
-      <button ion-button block color='padrao' type="submit">Confirmar</button>
+      <button ion-button block color='padrao' [disabled]="!formEditar.valid" type="submit">Confirmar</button>
     </div>
   </form>
 
