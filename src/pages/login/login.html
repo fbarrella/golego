@@ -2,26 +2,28 @@
 
 </ion-header>
 
+<ion-content class='content' padding>
 
-<ion-content padding>
+  <div class='logo'>
+    <img src="../../assets/imgs/gole-go_logo.png" />
+  </div>
 
   <form [formGroup]="loginForm" (ngSubmit)="logIn()">
-    <ion-item>
-      <ion-label floating>E-mail</ion-label>
-      <ion-input type='text' formControlName="email"></ion-input>
+    <ion-item class='itens'>
+      <ion-label class='t'>E-mail</ion-label>
+      <ion-input class='in' type='text' formControlName="email"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type='password' formControlName="senha"></ion-input>
+    <ion-item class='itens'>
+      <ion-label class='t'>Senha</ion-label>
+      <ion-input class='in' type='password' formControlName="senha"></ion-input>
     </ion-item>
-    <div padding>
-      <button ion-button block color='padrao' type="submit" [disabled]="!loginForm.valid">Entrar</button>
-      <p><a href="#">Esqueci minha senha</a></p>
-    </div>
+    
+      <button class='log-btn' color='padrao' ion-button block type="submit" [disabled]="!loginForm.valid">Entrar</button>
+      <p class='forgot'><a href="#">Esqueci minha senha</a></p> 
   </form>
-  <div padding>
-    <button ion-button block color='secondary' (click)='pushCadastro()' class="inferior">Quero me cadastrar!</button>
+
+  <div class="inferior" padding>
+      <button ion-button block color='primary' (click)='pushCadastro()'>Quero me cadastrar!</button>
   </div>
 
 </ion-content>
