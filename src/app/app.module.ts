@@ -1,5 +1,4 @@
 import { DirectivesModule } from './../directives/directives.module';
-import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore"
@@ -19,6 +18,10 @@ import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CadastroPage } from "../pages/cadastro/cadastro";
 import { LojaPage } from './../pages/loja/loja';
+import { LojaPedidosPage } from './../pages/loja-pedidos/loja-pedidos';
+import { LojaProdutosPage } from './../pages/loja-produtos/loja-produtos';
+import { LojaPerfilPage } from './../pages/loja-perfil/loja-perfil';
+import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
 import { PedidosPage } from './../pages/pedidos/pedidos';
 import { PerfilPage } from './../pages/perfil/perfil';
@@ -39,6 +42,9 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     CatalogoPage,
     LojaPage,
     LojaCadastroPage,
+    LojaPerfilPage,
+    LojaProdutosPage,
+    LojaPedidosPage,
     CustomHeaderComponent
   ],
   imports: [
@@ -61,7 +67,10 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     PedidosPage,
     CatalogoPage,
     LojaPage,
-    LojaCadastroPage
+    LojaCadastroPage,
+    LojaPerfilPage,
+    LojaProdutosPage,
+    LojaPedidosPage,
   ],
   providers: [
     StatusBar,

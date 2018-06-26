@@ -1,7 +1,8 @@
-import { Validacoes } from './../../utils/validators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Validacoes } from '../../utils/validators';
+
 
 @IonicPage()
 @Component({

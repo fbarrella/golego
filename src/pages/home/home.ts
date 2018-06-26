@@ -1,5 +1,4 @@
 import { LojaPage } from './../loja/loja';
-import { LojaCadastroPage } from './../loja-cadastro/loja-cadastro';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
 import { LoginService } from '../../providers/login/login.service';
@@ -7,7 +6,7 @@ import { paginaInterface } from '../../app/app.component';
 import { PerfilPage } from '../perfil/perfil';
 import { PedidosPage } from '../pedidos/pedidos';
 import { CatalogoPage } from '../catalogo/catalogo';
-import { LojaPage } from '../loja/loja';
+import { LojaCadastroPage } from '../loja-cadastro/loja-cadastro';
 
 @IonicPage()
 @Component({
