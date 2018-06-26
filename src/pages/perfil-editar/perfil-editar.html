@@ -1,20 +1,20 @@
 <ion-header>
   <ion-navbar color="padrao">
-    <div class='top_logo'>
-        <img src="../../assets/imgs/gole-go_white.png" />
-    </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Realizar Cadastro</h1>
+  <h1>Editar Perfil</h1>
 
   <ion-item>
-    <ion-label floating>Data de Nascimento</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" min="1900" max="1999" [(ngModel)]="nascimento"></ion-datetime>
+    <ion-avatar>
+      <img *ngIf="fotoTrocada" #novaFoto [src]="downloadUrl | async" class="center">
+      <img *ngIf="!fotoTrocada" [src]="dadosDoUsuario.avatarUrl" class="center">
+    </ion-avatar>
+    <button ion-button color='cinza' (click)="salvarAlteracoes()">Trocar Foto</button>
   </ion-item>
 
-  <form [formGroup]="cadastroForm" (ngSubmit)="criarUsuario()">
+  <form [formGroup]="formEditar" (ngSubmit)="at()">
     <ion-item>
       <ion-label fixed>Nome</ion-label>
       <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>
@@ -28,21 +28,6 @@
     <ion-item>
       <ion-label fixed>Telefone</ion-label>
       <ion-input type='text' formControlName="telefone" placeholder="(13) 3333-3333"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type='text' formControlName="email" placeholder="joao@email.com.br"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type='password' formControlName="senha"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Confirmar senha</ion-label>
-      <ion-input type='password' formControlName="senha2"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -78,7 +63,7 @@
     </ion-item>
 
     <div padding>
-      <button ion-button block color='padrao' type="submit">Confirmar</button>
+      <button ion-button block color='padrao' [disabled]="!formEditar.valid" type="submit">Confirmar</button>
     </div>
   </form>
 

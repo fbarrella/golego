@@ -1,23 +1,32 @@
-import { CustomHeaderComponent } from './../components/custom-header/custom-header';
+import { DirectivesModule } from './../directives/directives.module';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFirestoreModule } from "angularfire2/firestore"
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BrowserModule } from "@angular/platform-browser";
 import { ErrorHandler, NgModule } from "@angular/core";
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
-import { SplashScreen } from "@ionic-native/splash-screen";
+import { MyApp } from "./app.component";
 import { StatusBar } from "@ionic-native/status-bar";
-import { AngularFireModule } from "angularfire2";
-import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
-import { AngularFirestoreModule } from "angularfire2/firestore"
+import { SplashScreen } from "@ionic-native/splash-screen";
+
 import { LoginService } from "../providers/login/login.service";
 
-
-import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CadastroPage } from "../pages/cadastro/cadastro";
 import { LojaPage } from './../pages/loja/loja';
+import { LojaPedidosPage } from './../pages/loja-pedidos/loja-pedidos';
+import { LojaProdutosPage } from './../pages/loja-produtos/loja-produtos';
+import { LojaPerfilPage } from './../pages/loja-perfil/loja-perfil';
+import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
 import { PedidosPage } from './../pages/pedidos/pedidos';
 import { PerfilPage } from './../pages/perfil/perfil';
+import { PerfilEditarPage } from './../pages/perfil-editar/perfil-editar';
+import { CustomHeaderComponent } from './../components/custom-header/custom-header';
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 
@@ -28,9 +37,14 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     LoginPage,
     CadastroPage,
     PerfilPage,
+    PerfilEditarPage,
     PedidosPage,
     CatalogoPage,
     LojaPage,
+    LojaCadastroPage,
+    LojaPerfilPage,
+    LojaProdutosPage,
+    LojaPedidosPage,
     CustomHeaderComponent
   ],
   imports: [
@@ -38,7 +52,9 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    DirectivesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,14 +63,21 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     LoginPage,
     CadastroPage,
     PerfilPage,
+    PerfilEditarPage,
     PedidosPage,
     CatalogoPage,
-    LojaPage
+    LojaPage,
+    LojaCadastroPage,
+    LojaPerfilPage,
+    LojaProdutosPage,
+    LojaPedidosPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LoginService,
+    FileChooser,
+    File,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

@@ -1,18 +1,1 @@
-<ion-menu [content]="conteudo" side="right">
-    <ion-content>
-        <ion-list>
-            <button ion-item menuClose *ngFor="let p of paginas" (click)="abrirPagina(p)">
-                <ion-icon item-start [name]="p.icone" [color]="estaAtiva(p)"></ion-icon>
-                {{p.titulo}}
-            </button>
-        </ion-list>
-    </ion-content>
-    <ion-footer>
-        <ion-list>
-            <button ion-item>Sobre o aplicativo</button>
-            <button ion-item (click)="sair()">Sair</button>
-        </ion-list>
-    </ion-footer>
-</ion-menu>
-
-<ion-nav #conteudo [root]="rootPage"></ion-nav>
+<ion-nav [root]="rootPage"></ion-nav>

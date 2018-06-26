@@ -1,9 +1,15 @@
+import { Endereco } from "./endereco.model";
+
 export interface Usuario {
-    uid: string,
+    uid?: string,
     nome: string,
     sobrenome: string,
-    dataNasc: Date,
+    email?: string,
+    emailVerificado?: boolean,
+    dataNasc: string,
     avatarUrl?: string,
     telefone: string,
-    possuiLoja: boolean,
+    possuiLoja?: boolean,
+    endereco: Endereco
 }
+

@@ -1,7 +1,58 @@
 <ion-header>
-  <custom-header></custom-header>
+  <div class="margincorrection">
+      <custom-header></custom-header>
+  </div>
 </ion-header>
 
 <ion-content padding>
+  <!-- avatar can be set using the item-start and item-end attributes -->
+  <ion-grid>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="usuario.avatarUrl">
+      </ion-avatar>
+      <h1>{{usuario?.nome}}</h1>
+      <h1>{{usuario?.sobrenome}}</h1>
+      <h2>{{usuario?.email}}</h2>
+    </ion-item>
+
+    <ion-col col-12>
+      <ion-row>
+        <p><strong>Endereço:</strong></p>
+      </ion-row>
+
+      <ion-row>
+        <p>
+          {{usuario?.endereco?.rua}} - {{usuario?.endereco?.bairro}} - {{usuario?.endereco?.cidade}}, {{usuario?.endereco?.estado}}
+        </p>
+      </ion-row>
+
+      <ion-row>
+        <p><strong>Complemento:</strong></p>
+      </ion-row>
+
+      <ion-row>
+        <p>{{usuario?.endereco?.complemento}}</p>
+      </ion-row>
+
+      <ion-row>
+        <p><strong>CEP:</strong></p>
+      </ion-row>
+
+      <ion-row>
+        <p>{{usuario?.endereco?.cep}}</p>
+      </ion-row>
+
+      <ion-row>
+        <p><strong>Telefone:</strong></p>
+      </ion-row>
+      <ion-row>
+        <p>{{usuario?.telefone}}</p>
+      </ion-row>
+    </ion-col>
+
+  </ion-grid>
+  <button ion-button block color='cinza' (click)="pushEditarPerfil()">Editar informações</button>
+
 
 </ion-content>
