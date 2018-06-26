@@ -1,12 +1,10 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LojaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { paginaInterface } from '../../app/app.component';
+import { LojaPerfilPage } from '../loja-perfil/loja-perfil';
+import { LojaPedidosPage } from '../loja-pedidos/loja-pedidos';
+import { LojaProdutosPage } from '../loja-produtos/loja-produtos';
 
 @IonicPage()
 @Component({
@@ -15,11 +13,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LojaPage {
 
+  paginas: paginaInterface[] = [
+    { titulo: "Perfil da Loja", nome: "PerfilPage", componente: LojaPerfilPage, icone: "basket" },
+    { titulo: "Pedidos", nome: "PedidosPage", componente: LojaPedidosPage, icone: "cube" },
+    { titulo: "Produtos", nome: "CatalogoPage", componente: LojaProdutosPage, icone: "cart" },
+    { titulo: "Menu Principal", nome: "LojaPage", componente: HomePage, icone: "logo-usd" }
+  ]
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LojaPage');
-  }
 
 }

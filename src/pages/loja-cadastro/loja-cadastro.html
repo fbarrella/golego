@@ -1,0 +1,75 @@
+<ion-header>
+  <custom-header></custom-header>
+</ion-header>
+
+<ion-content padding>
+  <h1>Cadastrar loja</h1>
+
+  <form [formGroup]="criacaoForm" (ngSubmit)="criarLoja()">
+    <ion-item>
+      <ion-label floating>Nome Fantasia</ion-label>
+      <ion-input type='text' formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>CNPJ</ion-label>
+      <ion-input type='text' formControlName="documento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-textarea autosize maxLength="500" formControlname="descricao"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type='text' formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Telefone</ion-label>
+      <ion-input type='text' formControlName="telefone" placeholder="(13) 3333-3333"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Website(opcional)</ion-label>
+      <ion-input type='text' formControlName="website"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Endereço</ion-label>
+      <ion-input type='text' formControlName="endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Complemento(opcional)</ion-label>
+      <ion-input type='text' formControlName="complemento" placeholder="Apto/Conjunto/Bloco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Bairro</ion-label>
+      <ion-input type='text' formControlName="bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Cidade</ion-label>
+      <ion-input type='text' formControlName="cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Estado</ion-label>
+      <ion-select formControlName="estado">
+        <ion-option *ngFor="let sigla of siglas" [value]="sigla">{{sigla}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>CEP</ion-label>
+      <ion-input type='text' formControlName="cep" placeholder="10000-000"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button block color='padrao' [disabled]="!criacaoForm.valid" type="submit">Criar Loja</button>
+    </div>
+  </form>
+</ion-content>
