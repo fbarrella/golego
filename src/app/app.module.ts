@@ -29,6 +29,7 @@ import { PerfilEditarPage } from './../pages/perfil-editar/perfil-editar';
 import { CustomHeaderComponent } from './../components/custom-header/custom-header';
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
+import { LojaService } from '../providers/loja/loja.service';
 
 @NgModule({
   declarations: [
@@ -76,9 +77,10 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     StatusBar,
     SplashScreen,
     LoginService,
+    LojaService,
     FileChooser,
     File,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule { }
