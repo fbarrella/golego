@@ -1,5 +1,7 @@
+import { LojaPage } from './../loja/loja';
+import { LojaCadastroPage } from './../loja-cadastro/loja-cadastro';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
 import { LoginService } from '../../providers/login/login.service';
 import { paginaInterface } from '../../app/app.component';
 import { PerfilPage } from '../perfil/perfil';
@@ -25,7 +27,8 @@ export class HomePage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public navParams: NavParams,
-    public loginService: LoginService) {
+    private alertCtrl: AlertController,
+    private loginService: LoginService) {
   }
 
   logOut() {
@@ -33,7 +36,37 @@ export class HomePage {
   }
 
   abrirPagina(pagina: paginaInterface) {
-    this.navCtrl.push(pagina.componente);
+    switch (String(pagina.nome)) {
+      case "LojaPage":
+        if (!this.loginService.usuarioLogado.possuiLoja) {
+          let alertaLoja = this.alertCtrl.create({
+            title: 'Deseja criar uma loja?',
+            message: 'Detectamos que você ainda não possui nenhuma loja criada. Para continuar, seria necessário a criação de uma',
+            buttons: [
+              {
+                text: 'Cancelar',
+                role: 'cancel'
+              },
+              {
+                text: 'Criar',
+                handler: () => {
+                  this.navCtrl.push(LojaCadastroPage)
+                }
+              }
+            ]
+          });
+          alertaLoja.present();
+        }
+        else {
+          this.navCtrl.push(LojaPage);
+        }
+        break;
+      default:
+        this.navCtrl.push(pagina.componente);
+        break;
+    }
+
+
   }
 
 

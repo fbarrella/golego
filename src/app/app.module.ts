@@ -1,3 +1,5 @@
+import { DirectivesModule } from './../directives/directives.module';
+import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore"
@@ -11,9 +13,7 @@ import { MyApp } from "./app.component";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
-
 import { LoginService } from "../providers/login/login.service";
-
 
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
@@ -38,6 +38,7 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     PedidosPage,
     CatalogoPage,
     LojaPage,
+    LojaCadastroPage,
     CustomHeaderComponent
   ],
   imports: [
@@ -46,7 +47,8 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    DirectivesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +60,8 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     PerfilEditarPage,
     PedidosPage,
     CatalogoPage,
-    LojaPage
+    LojaPage,
+    LojaCadastroPage
   ],
   providers: [
     StatusBar,
