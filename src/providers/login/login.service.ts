@@ -46,6 +46,7 @@ export class LoginService {
                 avatarUrl: dados.avatarUrl,
                 telefone: dados.telefone,
                 possuiLoja: dados.possuiLoja,
+                lojaId: dados.lojaId,
                 endereco: dados.endereco
             }
 

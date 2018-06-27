@@ -28,6 +28,9 @@ export class HomePage {
     public navParams: NavParams,
     private alertCtrl: AlertController,
     private loginService: LoginService) {
+    if (this.loginService.usuarioLogado.uid === undefined) {
+      this.logOut();
+    }
   }
 
   logOut() {
@@ -68,7 +71,10 @@ export class HomePage {
           alertaLoja.present();
         }
         else {
-          this.navCtrl.push(pagina.componente, { donoId: this.loginService.usuarioLogado.uid });
+          this.navCtrl.push(
+            pagina.componente,
+            { lojaId: usuarioLogado.lojaId }
+          );
         }
         break;
       default:

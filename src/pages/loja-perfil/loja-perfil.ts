@@ -1,7 +1,4 @@
-import { first } from 'rxjs/operators';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
-import { LojaService } from './../../providers/loja/loja.service';
+import { LojaPerfilEditarPage } from './../loja-perfil-editar/loja-perfil-editar';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Loja } from '../../models/loja.model';
@@ -13,22 +10,27 @@ import { Loja } from '../../models/loja.model';
 })
 export class LojaPerfilPage {
 
-  loja$: Observable<Loja[]>
-  donoId: string;
+  lojaAtiva: Loja = null;
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public fireStore: AngularFirestore,
-    public lojaService: LojaService) {
-    this.donoId = this.navParams.get("donoId");
-    this.loja$ = this.fireStore
-      .collection<Loja>("/lojas", ref => ref.where("usuarioId", "==", this.donoId))
-      .valueChanges()
-      .pipe(
-      first()
-      );
+    public navParams: NavParams) {
+    this.lojaAtiva = this.navParams.get("loja");
   }
 
+  ionViewDidLoad() {
+  }
+
+  ionViewCanLeave() {
+    if (this.lojaAtiva === undefined || this.lojaAtiva === null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  pushEditarPerfil() {
+    this.navCtrl.push(LojaPerfilEditarPage, { loja: this.lojaAtiva })
+  }
 
 }

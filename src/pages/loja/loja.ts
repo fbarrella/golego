@@ -6,6 +6,7 @@ import { paginaInterface } from '../../app/app.component';
 import { LojaPerfilPage } from '../loja-perfil/loja-perfil';
 import { LojaPedidosPage } from '../loja-pedidos/loja-pedidos';
 import { LojaProdutosPage } from '../loja-produtos/loja-produtos';
+import { Loja } from '../../models/loja.model';
 
 @IonicPage()
 @Component({
@@ -21,17 +22,26 @@ export class LojaPage {
     { titulo: "Menu Principal", nome: "LojaPage", componente: HomePage, icone: "logo-usd" }
   ]
 
-  donoId: string;
+  lojaId: string;
+  lojaAtiva: Loja;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public lojaService: LojaService) {
-    this.donoId = navParams.get("donoId");
+    this.lojaId = navParams.get("lojaId");
   }
 
+  ionViewDidLoad() {
+    this.lojaService.buscarLojaAtiva(this.lojaId).then(async loja => {
+      this.lojaAtiva = await loja.data() as Loja;
+      console.log(this.lojaAtiva);
+    })
+  }
+
+
   abrirPagina(pagina: paginaInterface) {
-    this.navCtrl.push(pagina.componente, { donoId: this.donoId });
+    this.navCtrl.push(pagina.componente, { loja: this.lojaAtiva });
   }
 
 }

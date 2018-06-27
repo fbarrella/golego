@@ -1,3 +1,4 @@
+import { LojaPerfilEditarPage } from './../pages/loja-perfil-editar/loja-perfil-editar';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -50,6 +51,7 @@ import { LojaService } from '../providers/loja/loja.service';
     LojaPage,
     LojaCadastroPage,
     LojaPerfilPage,
+    LojaPerfilEditarPage,
     LojaProdutosPage,
     LojaPedidosPage,
     CustomHeaderComponent
@@ -79,6 +81,7 @@ import { LojaService } from '../providers/loja/loja.service';
     LojaPage,
     LojaCadastroPage,
     LojaPerfilPage,
+    LojaPerfilEditarPage,
     LojaProdutosPage,
     LojaPedidosPage,
   ],

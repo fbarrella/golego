@@ -10,6 +10,7 @@ export interface Usuario {
     avatarUrl?: string,
     telefone: string,
     possuiLoja?: boolean,
+    lojaId?: string,
     endereco: Endereco
 }
 
