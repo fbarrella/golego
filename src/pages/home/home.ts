@@ -35,9 +35,20 @@ export class HomePage {
   }
 
   abrirPagina(pagina: paginaInterface) {
+    const usuarioLogado = this.loginService.usuarioLogado;
     switch (String(pagina.nome)) {
       case "LojaPage":
-        if (!this.loginService.usuarioLogado.possuiLoja) {
+        if (!(usuarioLogado.emailVerificado)) {
+          let alertaEmail = this.alertCtrl.create({
+            title: 'Email não verificado',
+            message: 'Você precisa confirmar seu endereço de e-mail para ser habilitado a criar uma loja. Confira sua caixa de e-mails.',
+            buttons: [{ text: 'Ok', role: 'cancel' }]
+          });
+          alertaEmail.present();
+          break;
+        }
+
+        if ((!usuarioLogado.possuiLoja)) {
           let alertaLoja = this.alertCtrl.create({
             title: 'Deseja criar uma loja?',
             message: 'Detectamos que você ainda não possui nenhuma loja criada. Para continuar, seria necessário a criação de uma',
@@ -57,7 +68,7 @@ export class HomePage {
           alertaLoja.present();
         }
         else {
-          this.navCtrl.push(LojaPage);
+          this.navCtrl.push(pagina.componente, { donoId: this.loginService.usuarioLogado.uid });
         }
         break;
       default:
