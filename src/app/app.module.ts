@@ -17,6 +17,7 @@ import { LoginService } from "../providers/login/login.service";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CadastroPage } from "../pages/cadastro/cadastro";
+import { CompraPage } from '../pages/compra/compra';
 import { LojaPage } from './../pages/loja/loja';
 import { LojaPedidosPage } from './../pages/loja-pedidos/loja-pedidos';
 import { LojaProdutosPage } from './../pages/loja-produtos/loja-produtos';
@@ -24,6 +25,8 @@ import { LojaPerfilPage } from './../pages/loja-perfil/loja-perfil';
 import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
 import { PedidosPage } from './../pages/pedidos/pedidos';
+import { PesquisaProdutoPage } from './../pages/pesquisa-produto/pesquisa-produto';
+import { PesquisaLojaPage } from './../pages/pesquisa-loja/pesquisa-loja';
 import { PerfilPage } from './../pages/perfil/perfil';
 import { PerfilEditarPage } from './../pages/perfil-editar/perfil-editar';
 import { CustomHeaderComponent } from './../components/custom-header/custom-header';
@@ -36,9 +39,12 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     HomePage,
     LoginPage,
     CadastroPage,
+    CompraPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
+    PesquisaLojaPage,
+    PesquisaProdutoPage,
     CatalogoPage,
     LojaPage,
     LojaCadastroPage,
@@ -62,9 +68,12 @@ import { FIREBASE_CONFIG } from "./firebase.credentials";
     HomePage,
     LoginPage,
     CadastroPage,
+    CompraPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
+    PesquisaLojaPage,
+    PesquisaProdutoPage,
     CatalogoPage,
     LojaPage,
     LojaCadastroPage,
