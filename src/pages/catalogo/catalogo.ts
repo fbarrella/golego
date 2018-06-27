@@ -1,12 +1,7 @@
+import { PesquisaProdutoPage } from './../pesquisa-produto/pesquisa-produto';
+import { PesquisaLojaPage } from './../pesquisa-loja/pesquisa-loja';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CatalogoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,6 +15,14 @@ export class CatalogoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CatalogoPage');
+  }
+
+  setLoja(){
+    this.navCtrl.push(PesquisaLojaPage);
+  }
+
+  setProduto(){
+    this.navCtrl.push(PesquisaProdutoPage);
   }
 
 }
