@@ -68,7 +68,7 @@ export class HomePage {
           alertaLoja.present();
         }
         else {
-          this.navCtrl.push(pagina.componente);
+          this.navCtrl.push(pagina.componente, { donoId: this.loginService.usuarioLogado.uid });
         }
         break;
       default:

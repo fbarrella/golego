@@ -1,3 +1,4 @@
+import { LojaService } from './../../providers/loja/loja.service';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -20,8 +21,17 @@ export class LojaPage {
     { titulo: "Menu Principal", nome: "LojaPage", componente: HomePage, icone: "logo-usd" }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  donoId: string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public lojaService: LojaService) {
+    this.donoId = navParams.get("donoId");
   }
 
+  abrirPagina(pagina: paginaInterface) {
+    this.navCtrl.push(pagina.componente, { donoId: this.donoId });
+  }
 
 }

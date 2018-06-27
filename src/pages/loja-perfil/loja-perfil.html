@@ -1,18 +1,55 @@
-<!--
-  Generated template for the LojaPerfilPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>loja-perfil</ion-title>
-  </ion-navbar>
-
+  <custom-header></custom-header>
 </ion-header>
 
-
 <ion-content padding>
+  <div *ngIf="loja$ | async; let loja">
+    <ion-grid *ngFor="let l of loja">
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="l?.avatarUrl">
+        </ion-avatar>
+        <h1>{{l?.nome}}</h1>
+        <h2>{{l?.telefone}}</h2>
+      </ion-item>
+
+      <ion-col col-12>
+        <ion-row>
+          <p><strong>Endereço:</strong></p>
+        </ion-row>
+
+        <ion-row>
+          <p>
+            {{l?.endereco.rua}} - {{l?.endereco.bairro}} - {{l?.endereco.cidade}}, {{l?.endereco.estado}}
+          </p>
+        </ion-row>
+
+        <ion-row>
+          <p><strong>Complemento:</strong></p>
+        </ion-row>
+
+        <ion-row>
+          <p>{{l?.endereco.complemento}}</p>
+        </ion-row>
+
+        <ion-row>
+          <p><strong>CEP:</strong></p>
+        </ion-row>
+
+        <ion-row>
+          <p>{{l?.endereco.cep}}</p>
+        </ion-row>
+
+        <ion-row>
+          <p><strong>Telefone:</strong></p>
+        </ion-row>
+        <ion-row>
+          <p>{{l?.telefone}}</p>
+        </ion-row>
+      </ion-col>
+
+    </ion-grid>
+    <button ion-button block color='cinza' (click)="pushEditarPerfil()">Editar informações</button>
+  </div>
 
 </ion-content>

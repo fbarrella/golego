@@ -1,3 +1,4 @@
+import { Usuario } from './../../models/usuario.model';
 import { LojaService } from './../../providers/loja/loja.service';
 import { LoginService } from './../../providers/login/login.service';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -130,6 +131,11 @@ export class LojaCadastroPage {
       }
       try {
         await this.lojaService.criarLoja(dados);
+
+        await this.fireStore
+          .doc<Usuario>(`user/${this.loginService.usuarioLogado.uid}`)
+          .update({ possuiLoja: true });
+
         await carregamento.dismiss();
         this.navCtrl.pop();
       } catch (error) {
