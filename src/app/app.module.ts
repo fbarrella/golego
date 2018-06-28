@@ -1,3 +1,4 @@
+import { PedidosVisualizarPage } from './../pages/pedidos-visualizar/pedidos-visualizar';
 import { LojaProdutosEditarPage } from './../pages/loja-produtos-editar/loja-produtos-editar';
 import { LojaProdutosAdicionarPage } from './../pages/loja-produtos-adicionar/loja-produtos-adicionar';
 import { DirectivesModule } from './../directives/directives.module';
@@ -53,6 +54,7 @@ import { DecimalPipe } from '@angular/common';
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
+    PedidosVisualizarPage,
     PesquisaLojaPage,
     PesquisaProdutoPage,
     CatalogoPage,
@@ -87,6 +89,7 @@ import { DecimalPipe } from '@angular/common';
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
+    PedidosVisualizarPage,
     PesquisaLojaPage,
     PesquisaProdutoPage,
     CatalogoPage,
