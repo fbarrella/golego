@@ -15,7 +15,7 @@
       <hr>
       <ion-row *ngFor="let produto of produtos">
         <ion-col col-4 align-self-center>{{produto?.nome}}</ion-col>
-        <ion-col col-4 align-self-center>{{produto?.id}}</ion-col>
+        <ion-col col-4 align-self-center>{{produto?.prodId}}</ion-col>
         <ion-col col-2 align-self-center>{{produto?.emEstoque}}</ion-col>
         <ion-col col-2 align-self-start>
           <button ion-button color="" icon-only clear (click)="pushEditarProduto(produto)">

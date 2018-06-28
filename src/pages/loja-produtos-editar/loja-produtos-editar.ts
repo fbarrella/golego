@@ -28,7 +28,7 @@ export class LojaProdutosEditarPage {
 
     this.produto = this.navParams.get("produto") as Produto;
     this.categorias = Validacoes.categorias();
-    this.produtoRef = fireStore.doc(`user/${this.produto.id}`);
+    this.produtoRef = fireStore.doc(`user/${this.produto.prodId}`);
 
     this.produtoForm = this.formBuilder.group({
       quantidade: this.formBuilder.control('', Validators.compose([
