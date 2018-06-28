@@ -18,8 +18,7 @@ export class LojaPage {
   paginas: paginaInterface[] = [
     { titulo: "Perfil da Loja", nome: "PerfilPage", componente: LojaPerfilPage, icone: "basket" },
     { titulo: "Pedidos", nome: "PedidosPage", componente: LojaPedidosPage, icone: "cube" },
-    { titulo: "Produtos", nome: "CatalogoPage", componente: LojaProdutosPage, icone: "cart" },
-    { titulo: "Menu Principal", nome: "LojaPage", componente: HomePage, icone: "logo-usd" }
+    { titulo: "Produtos", nome: "CatalogoPage", componente: LojaProdutosPage, icone: "cart" }
   ]
 
   lojaId: string;
@@ -42,6 +41,10 @@ export class LojaPage {
 
   abrirPagina(pagina: paginaInterface) {
     this.navCtrl.push(pagina.componente, { loja: this.lojaAtiva });
+  }
+
+  backMenu(){
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
