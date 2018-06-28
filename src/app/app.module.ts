@@ -1,3 +1,4 @@
+import { LojaProdutosAdicionarPage } from './../pages/loja-produtos-adicionar/loja-produtos-adicionar';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -35,7 +36,9 @@ import { CustomHeaderComponent } from './../components/custom-header/custom-head
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 import { LojaService } from '../providers/loja/loja.service';
-import { ProdutoProvider } from '../providers/produto/produto';
+import { ProdutoProvider } from '../providers/produto/produto.service';
+import { DecimalPipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { ProdutoProvider } from '../providers/produto/produto';
     LojaPerfilPage,
     LojaPerfilEditarPage,
     LojaProdutosPage,
+    LojaProdutosAdicionarPage,
     LojaPedidosPage,
     CustomHeaderComponent
   ],
@@ -87,6 +91,7 @@ import { ProdutoProvider } from '../providers/produto/produto';
     LojaPerfilPage,
     LojaPerfilEditarPage,
     LojaProdutosPage,
+    LojaProdutosAdicionarPage,
     LojaPedidosPage,
   ],
   providers: [
@@ -98,6 +103,7 @@ import { ProdutoProvider } from '../providers/produto/produto';
     File,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ProdutoProvider,
+    DecimalPipe
   ]
 })
 export class AppModule { }

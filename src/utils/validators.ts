@@ -6,6 +6,10 @@ export class Validacoes {
         return ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
     }
 
+    static categorias() {
+        return ["Pilsen", "American Lager", "Premium Lager", "Helles", "Dortmunder Export", "Dry Beer", "Munich Dunkel", "American Dark Lager", "Malzibier", "Schwarzbier", "Dunkless Bock", "Doppelbock", "Helles Bock", "Vienna", "Marzen Lager", "American Pale Ale", "English Pale Ale", "American Amber Ale", "American Strong Ale", "Weizenbier", "Hefeweizen", "Dunkelweizen", "Weizenbock", "Witbier", "Berliner Weisse", "Stout", "Lambic", "Outros"];
+    }
+
     static emailPattern() {
         return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     }
