@@ -1,6 +1,4 @@
-import { PedidosVisualizarPage } from './../pages/pedidos-visualizar/pedidos-visualizar';
-import { LojaProdutosEditarPage } from './../pages/loja-produtos-editar/loja-produtos-editar';
-import { LojaProdutosAdicionarPage } from './../pages/loja-produtos-adicionar/loja-produtos-adicionar';
+import { PagamentoPage } from './../pages/pagamento/pagamento';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -24,10 +22,12 @@ import { CadastroPage } from "../pages/cadastro/cadastro";
 import { CompraPage } from '../pages/compra/compra';
 import { DetalhesProdutoPage } from './../pages/detalhes-produto/detalhes-produto';
 import { LojaPage } from './../pages/loja/loja';
-import { LojaPedidosPage } from './../pages/loja-pedidos/loja-pedidos';
 import { LojaProdutosPage } from './../pages/loja-produtos/loja-produtos';
 import { LojaPerfilEditarPage } from './../pages/loja-perfil-editar/loja-perfil-editar';
 import { LojaPerfilPage } from './../pages/loja-perfil/loja-perfil';
+import { PedidosVisualizarPage } from './../pages/pedidos-visualizar/pedidos-visualizar';
+import { LojaProdutosEditarPage } from './../pages/loja-produtos-editar/loja-produtos-editar';
+import { LojaProdutosAdicionarPage } from './../pages/loja-produtos-adicionar/loja-produtos-adicionar';
 import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
 import { PedidosPage } from './../pages/pedidos/pedidos';
@@ -65,8 +65,8 @@ import { DecimalPipe } from '@angular/common';
     LojaProdutosPage,
     LojaProdutosAdicionarPage,
     LojaProdutosEditarPage,
-    LojaPedidosPage,
-    CustomHeaderComponent
+    CustomHeaderComponent,
+    PagamentoPage
   ],
   imports: [
     BrowserModule,
@@ -100,7 +100,7 @@ import { DecimalPipe } from '@angular/common';
     LojaProdutosPage,
     LojaProdutosAdicionarPage,
     LojaProdutosEditarPage,
-    LojaPedidosPage,
+    PagamentoPage
   ],
   providers: [
     StatusBar,

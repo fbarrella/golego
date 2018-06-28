@@ -54,7 +54,12 @@ export class PedidosPage {
   }
 
   pushVisualizarPedido(pedido: Pedido) {
-    this.navCtrl.push(PedidosVisualizarPage, { pedido: pedido, isUsuario: true });
+    this.navCtrl.push(PedidosVisualizarPage,
+      {
+        pedido: pedido,
+        isUsuario: this.isUsuario,
+        isLoja: this.isLoja
+      });
   }
 
   transformDate(date: number) {
