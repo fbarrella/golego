@@ -1,3 +1,4 @@
+import { LojaProdutosEditarPage } from './../pages/loja-produtos-editar/loja-produtos-editar';
 import { LojaProdutosAdicionarPage } from './../pages/loja-produtos-adicionar/loja-produtos-adicionar';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
@@ -61,6 +62,7 @@ import { DecimalPipe } from '@angular/common';
     LojaPerfilEditarPage,
     LojaProdutosPage,
     LojaProdutosAdicionarPage,
+    LojaProdutosEditarPage,
     LojaPedidosPage,
     CustomHeaderComponent
   ],
@@ -94,6 +96,7 @@ import { DecimalPipe } from '@angular/common';
     LojaPerfilEditarPage,
     LojaProdutosPage,
     LojaProdutosAdicionarPage,
+    LojaProdutosEditarPage,
     LojaPedidosPage,
   ],
   providers: [
