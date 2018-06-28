@@ -5,7 +5,7 @@
 <ion-content padding>
 
   <h1>Meus Produtos</h1>
-  <div class="meusprodutos" *ngIf="produtos.length; else mensagem" paddings>
+  <div class="meusprodutos" *ngIf="produtos.length" padding>
     <ion-grid class="header">
       <ion-row>
         <ion-col col-4><strong>Nome do Produto</strong></ion-col>
@@ -14,9 +14,9 @@
       </ion-row>
       <hr>
       <ion-row *ngFor="let produto of produtos">
-        <ion-col col-4 align-self-center>{{produto.nome}}</ion-col>
-        <ion-col col-4 align-self-center>{{produto.id}}</ion-col>
-        <ion-col col-2 align-self-center>{{produto.qt}}</ion-col>
+        <ion-col col-4 align-self-center>{{produto?.nome}}</ion-col>
+        <ion-col col-4 align-self-center>{{produto?.id}}</ion-col>
+        <ion-col col-2 align-self-center>{{produto?.emEstoque}}</ion-col>
         <ion-col col-2 align-self-start>
           <button ion-button color="" icon-only clear (click)="pushEditarProduto(produto)">
             <ion-icon name="settings"></ion-icon>
@@ -25,7 +25,7 @@
       </ion-row>
     </ion-grid>
   </div>
-  <div #mensagem padding>
+  <div padding *ngIf="!produtos.length">
     <p>Você não possui produtos à venda!</p>
   </div>
 
