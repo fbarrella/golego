@@ -1,0 +1,54 @@
+<ion-header>
+  <custom-header></custom-header>
+</ion-header>
+
+<ion-content padding>
+  <h1>Detalhes do cartão</h1>
+
+  <form [formGroup]="pagamentoForm" (ngSubmit)="pagar()">
+    <ion-item>
+      <ion-label floating>Nome no cartão de crédito</ion-label>
+      <ion-input type='text' formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Número do cartão</ion-label>
+      <ion-input type='text' formControlName="cartao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Data de Expiração</ion-label>
+      <ion-input type='text' formControlName="data"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>CVV</ion-label>
+      <ion-input type='text' formControlName="cvv"></ion-input>
+    </ion-item>
+
+    <hr>
+    <h1>Endereço de cobrança</h1>
+    <hr>
+
+    <ion-item>
+      <ion-label floating>Endereço</ion-label>
+      <ion-input type='text' formControlName="endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Cidade</ion-label>
+      <ion-input type='text' formControlName="cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Estado</ion-label>
+      <ion-select formControlName="estado">
+        <ion-option *ngFor="let sigla of siglas" [value]="sigla">{{sigla}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div padding>
+      <button ion-button block color='padrao' type="submit">Pagar R${{valor}}</button>
+    </div>
+  </form>
+</ion-content>

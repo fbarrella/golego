@@ -56,6 +56,33 @@ export class LoginService {
         }
     }
 
+    async buscarUsuario(uid: string) {
+        try {
+            const usuarioDocument: firebase.firestore.DocumentSnapshot =
+                await this.db
+                    .doc(`user/${uid}`)
+                    .get();
+
+            let dados = usuarioDocument.data();
+
+            return {
+                uid: dados.uid,
+                nome: dados.nome,
+                sobrenome: dados.sobrenome,
+                email: dados.email,
+                emailVerificado: dados.emailVerified,
+                dataNasc: dados.dataNasc,
+                avatarUrl: dados.avatarUrl,
+                telefone: dados.telefone,
+                possuiLoja: dados.possuiLoja,
+                lojaId: dados.lojaId,
+                endereco: dados.endereco
+            }
+        } catch (error) {
+            throw error();
+        }
+    }
+
     limparUsuarioLogado() {
         this.usuarioLogado = null
     }

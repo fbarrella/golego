@@ -11,13 +11,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class LojaProdutosPage {
 
   produtos = [
-    { nome: "Produto 01", prodId: "123456789", emEstoque: 10, preco: 10.0, descricao: "É o produto 01" },
-    { nome: "Produto 02", prodId: "223456789", emEstoque: 0, preco: 10.0, descricao: "É o produto 02" },
-    { nome: "Produto 03", prodId: "323456789", emEstoque: 100, preco: 10.0, descricao: "É o produto 03" },
-    { nome: "Produto 04", prodId: "423456789", emEstoque: 200, preco: 10.0, descricao: "É o produto 04" },
-    { nome: "Produto 05", prodId: "523456789", emEstoque: 10, preco: 10.0, descricao: "É o produto 05" },
-    { nome: "Produto 06", prodId: "623456789", emEstoque: 5, preco: 10.0, descricao: "É o produto 06" },
-    { nome: "Produto 07", prodId: "723456789", emEstoque: 37, preco: 10.0, descricao: "É o produto 07" },
+    { nome: "Bear Premium Lager", prodId: "01", emEstoque: 10, preco: 13.90, descricao: "Lata - 500ml" },
+    { nome: "Coopers Original Pale Ale", prodId: "02", emEstoque: 0, preco: 17.90, descricao: "375ml" },
+    { nome: "Duvel", prodId: "03", emEstoque: 40, preco: 19.99, descricao: "330 ml" },
+    { nome: "Vedett Extra White", prodId: "04", emEstoque: 20, preco: 19.99, descricao: "330 ml" },
+    { nome: "Jever Pilsener", prodId: "05", emEstoque: 10, preco: 10.0, descricao: "330 ml" },
+    { nome: "Founders Dirty Bastard", prodId: "06", emEstoque: 5, preco: 10.0, descricao: "Garrafa - 355ml" },
+    { nome: "Warsteiner Premium", prodId: "07", emEstoque: 37, preco: 10.0, descricao: "330ml" },
   ];
 
   constructor(
@@ -29,12 +29,27 @@ export class LojaProdutosPage {
 
   }
 
+  ionViewWillEnter() {
+    let dadosEditados = this.navParams.get('produtoEditado') || null;
+    if (dadosEditados != null) {
+      let index = this.produtos.findIndex(p => p.prodId == dadosEditados.prodId)
+      if (index != -1) {
+        this.produtos[index] = dadosEditados;
+      }
+    }
+
+    let novoProduto = this.navParams.get('novoProduto') || null;
+    if (novoProduto != null) {
+      this.produtos.push(novoProduto);
+    }
+  }
+
   pushEditarProduto(produto) {
     this.navCtrl.push(LojaProdutosEditarPage, { produto: produto });
   }
 
   pushAddProduto() {
-    this.navCtrl.push(LojaProdutosAdicionarPage)
+    this.navCtrl.push(LojaProdutosAdicionarPage, { lastId: this.produtos[this.produtos.length - 1].prodId });
   }
 
 }

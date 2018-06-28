@@ -3,6 +3,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validacoes } from '../../utils/validators';
+import { Produto } from '../../models/produto.model';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ export class LojaProdutosAdicionarPage {
 
   produtoForm: FormGroup;
   categorias: string[];
+  lastId: string;
 
   constructor(
     public navCtrl: NavController,
@@ -20,6 +22,7 @@ export class LojaProdutosAdicionarPage {
     private formBuilder: FormBuilder) {
 
     this.categorias = Validacoes.categorias();
+    this.lastId = this.navParams.get("lastId");
 
     this.produtoForm = this.formBuilder.group({
       nome: this.formBuilder.control('', Validators.compose([
@@ -59,7 +62,16 @@ export class LojaProdutosAdicionarPage {
   }
 
   addProduto() {
-    console.log(this.produtoForm.value);
+    let newId = (parseInt(this.lastId) + 1).toString();
+    let produto = {
+      nome: this.nome,
+      prodId: newId,
+      emEstoque: this.quantidade,
+      preco: this.preco,
+      descricao: this.descricao
+    }
+    this.navCtrl.getPrevious().data.novoProduto = produto;
   }
+
 
 }

@@ -31,12 +31,12 @@ export class LojaProdutosEditarPage {
     this.produtoRef = fireStore.doc(`user/${this.produto.prodId}`);
 
     this.produtoForm = this.formBuilder.group({
-      quantidade: this.formBuilder.control('', Validators.compose([
+      quantidade: this.formBuilder.control(this.produto.emEstoque, Validators.compose([
         Validators.required])),
-      descricao: this.formBuilder.control(''),
-      preco: this.formBuilder.control('', Validators.compose([
+      descricao: this.formBuilder.control(this.produto.descricao),
+      preco: this.formBuilder.control(this.produto.preco, Validators.compose([
         Validators.required, Validators.min(1)])),
-      tipo: this.formBuilder.control('', Validators.compose([Validators.required]))
+      tipo: this.formBuilder.control(this.produto.tipo, Validators.compose([Validators.required]))
     });
   }
 
@@ -65,19 +65,28 @@ export class LojaProdutosEditarPage {
     try {
       if (this.produtoForm.valid) {
         carregamento.present();
-        await this.produtoRef.update({
-          emEstoque: this.quantidade,
-          descricao: this.descricao,
-          preco: this.preco,
-          tipo: this.tipo
-        });
+        // await this.produtoRef.update({
+        //   emEstoque: this.quantidade,
+        //   descricao: this.descricao,
+        //   preco: this.preco,
+        //   tipo: this.tipo
+        // });
+
+        this.produto.descricao = this.descricao;
+        this.produto.emEstoque = this.quantidade;
+        this.produto.preco = this.preco;
+        this.produto.tipo = this.tipo;
+
         carregamento.dismiss();
+
         let alertaSucesso: Alert = this.alertCtrl.create({
           title: 'Sucesso',
           message: "Os dados do produto foram atualizados",
           buttons: ['Dismiss'],
         });
         alertaSucesso.present();
+        this.navCtrl.getPrevious().data.produtoEditado = this.produto;
+        this.navCtrl.pop();
       }
     } catch (error) {
       carregamento.dismiss()

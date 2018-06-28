@@ -27,4 +27,32 @@
       <button ion-button block color='primary' (click)='confirmarRecebimento()'>Confirmar Recebimento</button>
     </div>
   </div>
+  <div padding *ngIf="isLoja">
+    <h1>Detalhes do Pedido</h1>
+    <ion-grid>
+      <ion-row *ngFor="let item of pedido.itens">
+        <ion-col col-8 align-self-end>{{item.quantidade}}x {{item.nome}}</ion-col>
+        <ion-col col-4 align-self-end>R${{item.preco}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-8 align-self-end>Frete</ion-col>
+        <ion-col col-4 align-self-end>R$10,0</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-8 align-self-end>Total</ion-col>
+        <ion-col col-4 align-self-end>R${{precoTotal}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <p>Cliente: <strong>{{cliente?.nome}} {{cliente?.sobrenome}}</strong></p>
+    <p>Endereço de entrega:<strong> {{pedido.enderecoDeEntrega.rua}} {{pedido.enderecoDeEntrega.complemento}}, {{pedido.enderecoDeEntrega.bairro}} - {{pedido.enderecoDeEntrega.cidade}},
+      {{pedido.enderecoDeEntrega.estado}} </strong></p>
+    <p>E-mail: <strong>{{cliente?.email}}</strong> </p>
+    <hr>
+    <p>Status: <strong>{{pedido.status}}</strong></p>
+    <p>Data: {{transformDate(pedido.dataDoPedido) | date: 'dd/MM/yyyy'}}</p>
+    <div padding *ngIf="pedido.status !== 'concluido'">
+      <button ion-button block color='primary' (click)='avancarStatus(pedido)'>Alterar Status</button>
+    </div>
+  </div>
 </ion-content>
