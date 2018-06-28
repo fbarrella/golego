@@ -8,13 +8,12 @@
 
   <ion-item>
     <ion-avatar>
-      <img *ngIf="fotoTrocada" #novaFoto [src]="downloadUrl | async" class="center">
-      <img *ngIf="!fotoTrocada" [src]="dadosDoUsuario.avatarUrl" class="center">
+      <img [src]="dadosDoUsuario.avatarUrl" class="center">
     </ion-avatar>
-    <button ion-button color='cinza' (click)="salvarAlteracoes()">Trocar Foto</button>
+    <button ion-button color='cinza' (click)="escolherFoto()">Trocar Foto</button>
   </ion-item>
 
-  <form [formGroup]="formEditar" (ngSubmit)="at()">
+  <form [formGroup]="formEditar" (ngSubmit)="salvarAlteracoes()">
     <ion-item>
       <ion-label fixed>Nome</ion-label>
       <ion-input type='text' formControlName="nome" placeholder="João"></ion-input>

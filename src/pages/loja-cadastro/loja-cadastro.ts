@@ -120,6 +120,7 @@ export class LojaCadastroPage {
         ativa: false,
         email: this.email,
         website: this.website,
+        avatarUrl: "https://firebasestorage.googleapis.com/v0/b/golego-199917.appspot.com/o/imagens%2Fassets%2Fbeer.png?alt=media&token=dce9cba2-3ece-42f2-bf12-06a575198af1",
         endereco: {
           rua: this.endereco,
           complemento: this.complemento,
@@ -134,9 +135,10 @@ export class LojaCadastroPage {
 
         await this.fireStore
           .doc<Usuario>(`user/${this.loginService.usuarioLogado.uid}`)
-          .update({ possuiLoja: true });
+          .update({ possuiLoja: true, lojaId: lojaId });
 
         await carregamento.dismiss();
+        this.loginService.setUsuarioLogado(usuarioId);
         this.navCtrl.pop();
       } catch (error) {
         await carregamento.dismiss();

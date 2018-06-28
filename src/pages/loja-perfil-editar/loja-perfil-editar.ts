@@ -1,3 +1,5 @@
+import { LojaPage } from './../loja/loja';
+import { HomePage } from './../home/home';
 import { Loja } from './../../models/loja.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, Alert } from 'ionic-angular';
@@ -118,7 +120,12 @@ export class LojaPerfilEditarPage {
         let alertaSucesso: Alert = this.alertCtrl.create({
           title: 'Sucesso',
           message: "Os dados da loja foram atualizados",
-          buttons: ['Dismiss'],
+          buttons: [{
+            text: 'Ok',
+            handler: () => {
+              this.navCtrl.setRoot(HomePage);
+            }
+          }],
         });
         alertaSucesso.present();
       }
