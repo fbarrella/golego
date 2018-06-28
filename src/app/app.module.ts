@@ -1,4 +1,3 @@
-import { LojaPerfilEditarPage } from './../pages/loja-perfil-editar/loja-perfil-editar';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -19,9 +18,11 @@ import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { CadastroPage } from "../pages/cadastro/cadastro";
 import { CompraPage } from '../pages/compra/compra';
+import { DetalhesProdutoPage } from './../pages/detalhes-produto/detalhes-produto';
 import { LojaPage } from './../pages/loja/loja';
 import { LojaPedidosPage } from './../pages/loja-pedidos/loja-pedidos';
 import { LojaProdutosPage } from './../pages/loja-produtos/loja-produtos';
+import { LojaPerfilEditarPage } from './../pages/loja-perfil-editar/loja-perfil-editar';
 import { LojaPerfilPage } from './../pages/loja-perfil/loja-perfil';
 import { LojaCadastroPage } from './../pages/loja-cadastro/loja-cadastro';
 import { CatalogoPage } from './../pages/catalogo/catalogo';
@@ -34,6 +35,7 @@ import { CustomHeaderComponent } from './../components/custom-header/custom-head
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 import { LojaService } from '../providers/loja/loja.service';
+import { ProdutoProvider } from '../providers/produto/produto';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { LojaService } from '../providers/loja/loja.service';
     LoginPage,
     CadastroPage,
     CompraPage,
+    DetalhesProdutoPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
@@ -72,6 +75,7 @@ import { LojaService } from '../providers/loja/loja.service';
     LoginPage,
     CadastroPage,
     CompraPage,
+    DetalhesProdutoPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
@@ -93,6 +97,7 @@ import { LojaService } from '../providers/loja/loja.service';
     FileChooser,
     File,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ProdutoProvider,
   ]
 })
 export class AppModule { }
