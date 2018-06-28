@@ -2,14 +2,16 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Loja } from './../../models/loja.model';
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs/operators';
+import firebase from 'firebase/app';
 
 
 @Injectable()
 export class LojaService {
 
-  constructor(public fireStore: AngularFirestore) {
+  private db: firebase.firestore.Firestore;
 
+  constructor(public fireStore: AngularFirestore) {
+    this.db = firebase.firestore();
   }
 
   async criarLoja(loja: Loja): Promise<void> {
@@ -22,9 +24,30 @@ export class LojaService {
     }
   }
 
-  buscarLojas(): Observable<Loja[]> {
-    const lojasRef = this.fireStore.collection<Loja>("lojas");
-    return lojasRef.valueChanges();
+  lojaPorId(id: string) {
+    return this.fireStore.doc<Loja>(`/lojas/${id}`);
   }
+
+  lojasPorFiltro(nome?: string, estado?: string) {
+
+    if (nome !== null) {
+      return this.fireStore.collection<Loja>("lojas", ref => ref.where("nome", "==", nome));
+    }
+    if (estado !== null) {
+      return this.fireStore.collection<Loja>("lojas", ref => ref.where("estado", "==", estado));
+    }
+
+  }
+
+  lojas() {
+    return this.fireStore.collection<Loja>("lojas");
+  }
+
+  buscarLojaAtiva(id: string) {
+    return this.db
+      .doc(`lojas/${id}`)
+      .get();
+  }
+
 
 }

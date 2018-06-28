@@ -1,9 +1,10 @@
+import { HomePage } from './../home/home';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, Alert, Loading } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
@@ -22,14 +23,13 @@ export class PerfilEditarPage {
   perfilRef: AngularFirestoreDocument<Usuario>;
   formEditar: FormGroup;
   siglas: string[];
-  fotoTrocada: boolean = false;
   fotoUrl: string = null;
 
   // Upload
   task: AngularFireUploadTask;
   downloadUrl: Observable<string>;
   // private porcentagem: Observable<number>;
-  @ViewChild("novaFoto") fotoRef: ElementRef;
+  // @ViewChild("novaFoto") fotoRef: ElementRef;
 
   constructor(
     public navCtrl: NavController,
@@ -128,6 +128,7 @@ export class PerfilEditarPage {
           buttons: ['Dismiss'],
         });
         alertaSucesso.present();
+        this.navCtrl.setRoot(HomePage);
       }
     } catch (error) {
       carregamento.dismiss()
@@ -178,11 +179,9 @@ export class PerfilEditarPage {
       finalize(() => this.downloadUrl = fileRef.getDownloadURL())
     ).subscribe((url) => {
       if (url) {
-        this.fotoTrocada = true;
-        this.fotoUrl = this.fotoRef.nativeElement.src;
-      }
-      else {
-        this.fotoTrocada = false;
+        this.perfilRef.update({
+          avatarUrl: url.downloadURL
+        });
       }
     })
   }
