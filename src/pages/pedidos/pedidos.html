@@ -2,7 +2,28 @@
   <custom-header></custom-header>
 </ion-header>
 
-
 <ion-content padding>
-
+  <h1>Pedidos</h1>
+  <div class="pedidos" padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5><strong>Nº Pedido</strong></ion-col>
+        <ion-col col-4><strong>Data </strong></ion-col>
+        <ion-col col-3><strong>Ver</strong></ion-col>
+      </ion-row>
+      <hr>
+      <ion-row *ngFor="let pedido of pedidos">
+        <ion-col col-5 align-self-center>{{pedido?.id}}</ion-col>
+        <ion-col col-4 align-self-center>{{transformDate(pedido?.dataDoPedido) | date: 'dd/MM/yyyy'}}</ion-col>
+        <ion-col col-3 align-self-start>
+          <button ion-button color="gray" icon-only clear (click)="pushVisualizarPedido(pedido)">
+          <ion-icon name="beer"></ion-icon>
+        </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div padding *ngIf="!pedidos.length">
+    <p>Você não fez nenhum pedido!</p>
+  </div>
 </ion-content>
