@@ -2,7 +2,6 @@ import { Produto } from './../../models/produto.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertController, Alert } from 'ionic-angular';
-import { Produto } from '../../models/produto.model';
 import { Validacoes } from '../../utils/validators';
 import { AngularFirestoreDocument, AngularFirestore } from 'angularfire2/firestore';
 

@@ -77,6 +77,9 @@ export class HomePage {
           );
         }
         break;
+      case "PedidosPage":
+        this.navCtrl.push(pagina.componente, { isUsuario: true });
+        break;
       default:
         this.navCtrl.push(pagina.componente);
         break;

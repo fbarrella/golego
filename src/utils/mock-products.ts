@@ -2,6 +2,7 @@ import { Produto } from './../models/produto.model';
 
 export const PRODUTOS: Produto[] = [
     {
+        id: "AAAAA",
         nome: 'Bode Brown',
         descricao: 'Cerveja Show de Bola',
         emEstoque: 3,
@@ -15,6 +16,7 @@ export const PRODUTOS: Produto[] = [
         tipo: 'Pale Ale'
     },
     {
+        id: "AAAAA",
         nome: 'Biritis',
         descricao: 'Cerveja do Mussum',
         emEstoque: 2,
@@ -28,6 +30,7 @@ export const PRODUTOS: Produto[] = [
         tipo: 'Lager'
     },
     {
+        id: "AAAAA",
         nome: 'Vedette',
         descricao: 'Cerveja alemã',
         emEstoque: 7,
@@ -41,6 +44,7 @@ export const PRODUTOS: Produto[] = [
         tipo: 'Witbier'
     },
     {
+        id: "AAAAA",
         nome: 'Colorado',
         descricao: 'Cerveja do urso',
         emEstoque: 1,
