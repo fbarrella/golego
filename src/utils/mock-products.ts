@@ -5,7 +5,7 @@ export const PRODUTOS: Produto[] = [
         nome: 'Bode Brown',
         descricao: 'Cerveja Show de Bola',
         emEstoque: 3,
-        icone: 'teste',
+        icone: 'http://www.abc.net.au/news/image/8314104-1x1-940x940.jpg',
         imagens: [
             'teste',
             'teste'
@@ -18,7 +18,7 @@ export const PRODUTOS: Produto[] = [
         nome: 'Biritis',
         descricao: 'Cerveja do Mussum',
         emEstoque: 2,
-        icone: 'teste2',
+        icone: 'http://www.abc.net.au/news/image/8314104-1x1-940x940.jpg',
         imagens: [
             'teste2',
             'teste2'
@@ -31,7 +31,7 @@ export const PRODUTOS: Produto[] = [
         nome: 'Vedette',
         descricao: 'Cerveja alemã',
         emEstoque: 7,
-        icone: 'teste3',
+        icone: 'http://www.abc.net.au/news/image/8314104-1x1-940x940.jpg',
         imagens: [
             'teste3',
             'teste3'
@@ -44,7 +44,7 @@ export const PRODUTOS: Produto[] = [
         nome: 'Colorado',
         descricao: 'Cerveja do urso',
         emEstoque: 1,
-        icone: 'teste4',
+        icone: 'http://www.abc.net.au/news/image/8314104-1x1-940x940.jpg',
         imagens: [
             'teste4',
             'teste4'
