@@ -1,3 +1,4 @@
+import { ForgotPasswdPage } from './../pages/forgot-passwd/forgot-passwd';
 import { PagamentoPage } from './../pages/pagamento/pagamento';
 import { DirectivesModule } from './../directives/directives.module';
 import { AngularFireModule } from "angularfire2";
@@ -51,6 +52,7 @@ import { DecimalPipe } from '@angular/common';
     CadastroPage,
     CompraPage,
     DetalhesProdutoPage,
+    ForgotPasswdPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,
@@ -86,6 +88,7 @@ import { DecimalPipe } from '@angular/common';
     CadastroPage,
     CompraPage,
     DetalhesProdutoPage,
+    ForgotPasswdPage,
     PerfilPage,
     PerfilEditarPage,
     PedidosPage,

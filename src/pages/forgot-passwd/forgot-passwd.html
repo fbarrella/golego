@@ -1,0 +1,23 @@
+<ion-header>
+  <custom-header></custom-header>
+</ion-header>
+
+
+<ion-content padding>
+  <h1>Esqueci minha senha</h1>
+  <ion-grid>
+    <ion-row>
+      Insira o e-mail utilizado na criação da conta. Será enviado um link de recuperação da senha.
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type='text'></ion-input>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+
+  <div padding>
+      <button color='padrao' ion-button block (click)='backLogin()'>Solicitar Recuperação</button>
+  </div>
+</ion-content>

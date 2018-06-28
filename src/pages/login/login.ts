@@ -1,3 +1,4 @@
+import { ForgotPasswdPage } from './../forgot-passwd/forgot-passwd';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
@@ -40,6 +41,10 @@ export class LoginPage {
 
   pushCadastro() {
     this.navCtrl.push(CadastroPage);
+  }
+
+  forgotPass(){
+    this.navCtrl.push(ForgotPasswdPage);
   }
 
   logIn() {
