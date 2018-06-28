@@ -1,12 +1,7 @@
+import { Pedido } from './../../models/pedido.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PedidosVisualizarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DateUtils } from '../../utils/date.utils';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PedidosVisualizarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pedido: Pedido;
+  isLoja: boolean = false;
+  isUsuario: boolean = false;
+  precoTotal: number = 10.0;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.pedido = navParams.get("pedido");
+    this.isLoja = navParams.get("isLoja");
+    this.isUsuario = navParams.get("isUsuario");
+    this.calculaPrecoTotal();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PedidosVisualizarPage');
+    console.log(this.isUsuario);
+    console.log(this.pedido);
+  }
+
+  ionViewCanEnter() {
+    if (this.pedido === null || this.pedido === undefined) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  calculaPrecoTotal() {
+    for (var index = 0; index < this.pedido.itens.length; index++) {
+      let produto = this.pedido.itens[index];
+      this.precoTotal += (produto.preco * produto.quantidade);
+    }
+  }
+
+  transformDate(date: number) {
+    return DateUtils.UnixToDate(date);
   }
 
 }

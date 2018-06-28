@@ -1,3 +1,4 @@
+import { PedidosVisualizarPage } from './../pedidos-visualizar/pedidos-visualizar';
 import { DateUtils } from './../../utils/date.utils';
 import { IdUtils } from './../../utils/id.generator';
 import { Pedido } from './../../models/pedido.model';
@@ -50,11 +51,10 @@ export class PedidosPage {
     console.log(this.pedidos);
     console.log(this.isUsuario);
     console.log(this.isLoja);
-    console.log(IdUtils.GenerateId())
   }
 
   pushVisualizarPedido(pedido: Pedido) {
-    console.log(pedido);
+    this.navCtrl.push(PedidosVisualizarPage, { pedido: pedido, isUsuario: true });
   }
 
   transformDate(date: number) {
