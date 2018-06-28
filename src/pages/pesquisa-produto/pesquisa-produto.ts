@@ -11,10 +11,17 @@ import { Produto } from '../../models/produto.model';
 })
 export class PesquisaProdutoPage {
 
+  arrayNew: Produto[];
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private prodService: ProdutoService
              ) {
+               if(this.navParams.get('arrayNovo')){
+                 this.arrayNew = this.navParams.get('arrayNovo')
+               }else{
+                 this.arrayNew = [];
+               }
   }
 
   ngOnInit(){
@@ -30,7 +37,8 @@ export class PesquisaProdutoPage {
 
   showDetails(produtoId: string){
     this.navCtrl.push(DetalhesProdutoPage, {
-      paramId: produtoId
+      paramId: produtoId,
+      arrayNovo: this.arrayNew
     });
   }
 

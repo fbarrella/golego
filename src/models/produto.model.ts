@@ -7,5 +7,6 @@ export interface Produto {
     imagens?: string[],
     lojaId: string,
     preco: number,
-    tipo: string
+    tipo: string,
+    qtde?: number
 }

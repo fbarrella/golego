@@ -4,5 +4,47 @@
 
 
 <ion-content padding>
+  <h1>Seu Carrinho</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Produto</strong></ion-col>
+      <ion-col><strong>Loja</strong></ion-col>
+      <ion-col><strong>Preço</strong></ion-col>
+      <ion-col><strong>Quantidade</strong></ion-col>
+    </ion-row>
+    <hr>
+    <ion-row *ngFor='let c of carrinho'>
+      <ion-col>{{ c.nome }}</ion-col>
+      <ion-col>Loja {{ c.lojaId }}</ion-col>
+      <ion-col>R$ {{ c.preco }}</ion-col>
+      <ion-col>
+        <ion-grid class='minorMargin'>
+          <ion-row class='minorMargin'>
+            <ion-col class='minorMargin col'>
+              <ion-avatar>
+                <ion-icon name="remove-circle" color='danger' (click)='reduzirQtde(c.prodId)'></ion-icon>
+              </ion-avatar>
+            </ion-col>
+            <ion-col class='minorMargin col'>{{ c.qtde }}</ion-col>
+            <ion-col class='minorMargin col'>
+              <ion-avatar>
+                <ion-icon name="add-circle" color='secondary' (click)='adicionarQtde(c.prodId)'></ion-icon>
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row class='toRight'><strong>Preço Total: R$ {{ preco }}</strong></ion-row>
+  </ion-grid>
 
+  <div padding>
+    <button ion-button block color='primary' (click)='addProduto()'>+ Adicionar produto</button>
+  </div>
+
+  <div class='inferior'>
+      <button ion-button block color='secondary'>Finalizar Pedido</button>
+    <button ion-button block color='danger' (click)='cancelar()'>Cancelar Pedido</button>
+  </div>
 </ion-content>
