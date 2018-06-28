@@ -1,18 +1,37 @@
-<!--
-  Generated template for the LojaProdutosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>loja-produtos</ion-title>
-  </ion-navbar>
-
+  <custom-header></custom-header>
 </ion-header>
 
-
 <ion-content padding>
+
+  <h1>Meus Produtos</h1>
+  <div class="meusprodutos" *ngIf="produtos.length; else mensagem" paddings>
+    <ion-grid class="header">
+      <ion-row>
+        <ion-col col-4><strong>Nome do Produto</strong></ion-col>
+        <ion-col col-4><strong>Código </strong></ion-col>
+        <ion-col col-2><strong>Qt.</strong></ion-col>
+      </ion-row>
+      <hr>
+      <ion-row *ngFor="let produto of produtos">
+        <ion-col col-4 align-self-center>{{produto.nome}}</ion-col>
+        <ion-col col-4 align-self-center>{{produto.id}}</ion-col>
+        <ion-col col-2 align-self-center>{{produto.qt}}</ion-col>
+        <ion-col col-2 align-self-start>
+          <button ion-button color="" icon-only clear (click)="pushEditarProduto(produto)">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div #mensagem padding>
+    <p>Você não possui produtos à venda!</p>
+  </div>
+
+  <div padding>
+    <button ion-button block color='primary' (click)='addProduto()'>+Adicionar produto</button>
+  </div>
+
 
 </ion-content>
