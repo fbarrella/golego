@@ -5,8 +5,8 @@ import { LoginService } from '../../providers/login/login.service';
 import { paginaInterface } from '../../app/app.component';
 import { PerfilPage } from '../perfil/perfil';
 import { PedidosPage } from '../pedidos/pedidos';
-import { CatalogoPage } from '../catalogo/catalogo';
 import { LojaCadastroPage } from '../loja-cadastro/loja-cadastro';
+import { PesquisaProdutoPage } from '../pesquisa-produto/pesquisa-produto';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class HomePage {
   paginas: paginaInterface[] = [
     { titulo: "Meu Perfil", nome: "PerfilPage", componente: PerfilPage, icone: "contact" },
     { titulo: "Meus Pedidos", nome: "PedidosPage", componente: PedidosPage, icone: "cube" },
-    { titulo: "Nova Compra", nome: "CatalogoPage", componente: CatalogoPage, icone: "cart" },
+    { titulo: "Nova Compra", nome: "PesquisaProdutoPage", componente: PesquisaProdutoPage, icone: "cart" },
     { titulo: "Minha Loja", nome: "LojaPage", componente: LojaPage, icone: "logo-usd" }
   ]
 
