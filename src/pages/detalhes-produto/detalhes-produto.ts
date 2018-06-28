@@ -1,3 +1,4 @@
+import { ProdutoService } from './../../providers/produto/produto.service';
 import { Produto } from './../../models/produto.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -9,9 +10,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhesProdutoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  produtoId: string;
+  
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private prodService: ProdutoService
+             ) {
+    this.produtoId = this.navParams.get('paramId');
   }
 
-  produto: Produto;
+  ngOnInit(){
+    this.getProduto();
+  }
+
+  prodDetails: Produto;
+
+  getProduto(){
+    this.prodService.getProdutos().subscribe((produtos) => {
+      for(let i=0; i<produtos.length; i++) {
+        if(produtos[i].prodId == this.produtoId){
+          console.log(produtos[i]);
+          return this.prodDetails = produtos[i];
+        }
+      }
+    });
+  }
 
 }

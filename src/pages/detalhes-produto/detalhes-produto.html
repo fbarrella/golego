@@ -6,11 +6,11 @@
 <ion-content padding>
   <ion-grid>
     <ion-item>
-      <ion-avatar>
-        <img [src]="produto.icone" />
+      <ion-avatar item-start>
+        <img [src]="prodDetails?.icone" />
       </ion-avatar>
-      <h1>{{ produto.nome }}</h1>
-      <h1>Preço: {{ produto.preco }}</h1>
+      <h1>{{ prodDetails?.nome }}</h1>
+      <h3 class='preco'>R$ {{ prodDetails?.preco }}</h3>
     </ion-item>
 
     <ion-col col-12>
@@ -20,7 +20,7 @@
 
       <ion-row>
         <p>
-          {{ produto.lojaId }}
+          {{ prodDetails?.lojaId }}
         </p>
       </ion-row>
 
@@ -29,7 +29,7 @@
       </ion-row>
 
       <ion-row>
-        <p>{{ produto.tipo }}</p>
+        <p>{{ prodDetails?.tipo }}</p>
       </ion-row>
 
       <ion-row>
@@ -37,12 +37,14 @@
       </ion-row>
 
       <ion-row>
-        <p>{{ produto.descricao }}</p>
+        <p>{{ prodDetails?.descricao }}</p>
       </ion-row>
 
     </ion-col>
 
   </ion-grid>
 
-  <button ion-button block color='secondary'>Adicionar ao carrinho</button>
+  <div class='inferior'>
+      <button ion-button block color='secondary'>Adicionar ao carrinho</button>
+  </div>
 </ion-content>

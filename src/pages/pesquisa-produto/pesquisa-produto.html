@@ -4,5 +4,13 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item class='itemSelect' *ngFor='let p of prodList' (click)='showDetails(p?.prodId)'>
+      <ion-avatar item-start>
+        <img [src]='p?.icone' />
+      </ion-avatar>
+      <h2>{{ p?.nome }}</h2>
+      <h4>Loja {{ p?.lojaId }}</h4>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -14,6 +14,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
 import { LoginService } from "../providers/login/login.service";
+import { HttpClientModule } from '@angular/common/http';
 
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
@@ -36,7 +37,7 @@ import { CustomHeaderComponent } from './../components/custom-header/custom-head
 
 import { FIREBASE_CONFIG } from "./firebase.credentials";
 import { LojaService } from '../providers/loja/loja.service';
-import { ProdutoProvider } from '../providers/produto/produto.service';
+import { ProdutoService } from '../providers/produto/produto.service';
 import { DecimalPipe } from '@angular/common';
 
 
@@ -65,6 +66,7 @@ import { DecimalPipe } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
@@ -100,9 +102,9 @@ import { DecimalPipe } from '@angular/common';
     LoginService,
     LojaService,
     FileChooser,
+    ProdutoService,
     File,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ProdutoProvider,
     DecimalPipe
   ]
 })
