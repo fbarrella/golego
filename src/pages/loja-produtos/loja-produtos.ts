@@ -1,3 +1,4 @@
+import { LojaProdutosAdicionarPage } from './../loja-produtos-adicionar/loja-produtos-adicionar';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -18,7 +19,8 @@ export class LojaProdutosPage {
     { nome: "Produto 07", id: "723456789", qt: 37 },
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
@@ -30,8 +32,8 @@ export class LojaProdutosPage {
     console.log(produto)
   }
 
-  addProduto() {
-
+  pushAddProduto() {
+    this.navCtrl.push(LojaProdutosAdicionarPage)
   }
 
 }

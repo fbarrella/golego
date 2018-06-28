@@ -3,7 +3,7 @@ import { Produto } from './../models/produto.model';
 export const PRODUTOS: Produto[] = [
     {
         nome: 'Bode Brown',
-        descricao: 'Cerveja Show de Bola', 
+        descricao: 'Cerveja Show de Bola',
         emEstoque: 3,
         icone: 'teste',
         imagens: [
@@ -16,7 +16,7 @@ export const PRODUTOS: Produto[] = [
     },
     {
         nome: 'Biritis',
-        descricao: 'Cerveja do Mussum', 
+        descricao: 'Cerveja do Mussum',
         emEstoque: 2,
         icone: 'teste2',
         imagens: [
@@ -29,7 +29,7 @@ export const PRODUTOS: Produto[] = [
     },
     {
         nome: 'Vedette',
-        descricao: 'Cerveja alemã', 
+        descricao: 'Cerveja alemã',
         emEstoque: 7,
         icone: 'teste3',
         imagens: [
@@ -42,7 +42,7 @@ export const PRODUTOS: Produto[] = [
     },
     {
         nome: 'Colorado',
-        descricao: 'Cerveja do urso', 
+        descricao: 'Cerveja do urso',
         emEstoque: 1,
         icone: 'teste4',
         imagens: [
